@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-fab right bottom>
+   <button ion-fab><ion-icon name="add"></ion-icon></button>
+ </ion-fab>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon [name]="item.icon" item-left></ion-icon>
