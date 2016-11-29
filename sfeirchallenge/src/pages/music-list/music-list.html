@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Page Two</ion-title>
+    <ion-title>Ma musique</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,14 +13,18 @@
  </ion-fab>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
+      <ion-avatar item-left>
+        <img [src]="item.picture">
+      </ion-avatar>
+      <h2>{{item.title}}</h2>
+      <h3>{{item.author}}</h3>
+      <p>{{item.album}}</p>
       <div class="item-note" item-right>
-        {{item.note}}
+        {{item.year}}
+      </div>
+      <div class="item-note" item-right>
+        <ion-icon *ngFor="let rate of [1,2,3,4,5]" [name]="rate <= item.note ? 'star' : 'star-outline'"></ion-icon>
       </div>
     </button>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
 </ion-content>

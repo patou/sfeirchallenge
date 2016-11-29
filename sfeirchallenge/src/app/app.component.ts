@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
+import { MusicList } from '../pages/music-list/music-list';
 import { SettingsPage } from '../pages/settings/settings'
 
 
@@ -22,13 +22,13 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { name: 'Mes Livres', component: Page2, icon: 'book' },
-      { name: 'Mes DVD', component: Page2, icon: 'disc' },
-      { name: 'Ma liste de course', component: Page2, icon: 'cart' },
-      { name: 'Mes jeux', component: Page2, icon: 'logo-playstation' },
-      { name: 'Ma musique', component: Page2, icon: 'musical-notes' },
-      { name: 'Mes voyages', component: Page2, icon: 'jet' },
-      { name: 'Mes vins', component: Page2, icon: 'wine' }
+      { name: 'Mes Livres', component: MusicList, icon: 'book' },
+      { name: 'Mes DVD', component: MusicList, icon: 'disc' },
+      { name: 'Ma liste de course', component: MusicList, icon: 'cart' },
+      { name: 'Mes jeux', component: MusicList, icon: 'logo-playstation' },
+      { name: 'Ma musique', component: MusicList, icon: 'musical-notes' },
+      { name: 'Mes voyages', component: MusicList, icon: 'jet' },
+      { name: 'Mes vins', component: MusicList, icon: 'wine' }
     ];
 
   }
