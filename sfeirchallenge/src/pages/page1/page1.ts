@@ -1,3 +1,4 @@
+import {CreateEntity} from "../create-entity/create-entity";
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
@@ -9,7 +10,11 @@ import { NavController } from 'ionic-angular';
 export class Page1 {
 
   constructor(public navCtrl: NavController) {
-    
+
   }
 
+
+  createEntity() {
+    this.navCtrl.setRoot(CreateEntity);
+  }
 }

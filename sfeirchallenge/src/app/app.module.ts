@@ -4,13 +4,15 @@ import { MyApp } from './app.component';
 import { Page1 } from '../pages/page1/page1';
 import { MusicList } from '../pages/music-list/music-list';
 import { SettingsPage } from '../pages/settings/settings';
+import { CreateEntity } from '../pages/create-entity/create-entity';
 
 @NgModule({
   declarations: [
     MyApp,
     Page1,
     MusicList,
-    SettingsPage
+    SettingsPage,
+    CreateEntity
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -20,7 +22,8 @@ import { SettingsPage } from '../pages/settings/settings';
     MyApp,
     Page1,
     MusicList,
-    SettingsPage
+    SettingsPage,
+    CreateEntity
   ],
   providers: []
 })

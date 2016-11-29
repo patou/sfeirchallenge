@@ -4,7 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Page1 } from '../pages/page1/page1';
 import { MusicList } from '../pages/music-list/music-list';
-import { SettingsPage } from '../pages/settings/settings'
+import { SettingsPage } from '../pages/settings/settings';
 
 
 @Component({
