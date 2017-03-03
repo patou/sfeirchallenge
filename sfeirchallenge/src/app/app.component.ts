@@ -22,6 +22,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
+      { name: 'Accueil', component: Page1, icon: 'apps' },
       { name: 'Mes Livres', component: MusicList, icon: 'book' },
       { name: 'Mes DVD', component: MusicList, icon: 'disc' },
       { name: 'Ma liste de course', component: MusicList, icon: 'cart' },
