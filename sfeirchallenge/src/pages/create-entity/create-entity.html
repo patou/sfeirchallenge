@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Créer une entité</ion-title>
+    <ion-title>Créer un stuff</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,26 +11,32 @@
   <ion-list>
 
     <ion-item>
-      <ion-label stacked>Donner un nom</ion-label>
+      <ion-label floating>Son nom</ion-label>
       <ion-input type="text" [(ngModel)]="name"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Choisissez une icone</ion-label>
-      <ion-select [(ngModel)]="icon">
-        <ion-option *ngFor="let p of templates" [value]="p.icon">{{p.icon}}</ion-option>
+      <ion-label floating>Son auteur</ion-label>
+      <ion-input type="text" [(ngModel)]="author"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Son type</ion-label>
+      <ion-select [(ngModel)]="type">
+        <ion-option *ngFor="let t of types" [value]="t.icon"><ion-icon [name]="t.icon" item-left></ion-icon>{{t.name}}</ion-option>
       </ion-select>
     </ion-item>
-    <button ion-item (click)="openSettings()">
-      <ion-icon name="plus" item-left></ion-icon>
-      Créer
-    </button>
-    <ion-list-header>
-      Préconfiguré
-    </ion-list-header>
-    <ion-item *ngFor="let p of templates">
-      <ion-icon [name]="p.icon" item-left></ion-icon>
-      {{p.name}}
+
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="DD/MM/AAAA" [(ngModel)]="date"></ion-datetime>
     </ion-item>
+
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea [(ngModel)]="desc"></ion-textarea>
+    </ion-item>
+
+    <button ion-button full (click)="save()">Créer</button>
   </ion-list>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Page1 } from '../pages/page1/page1';
@@ -14,11 +14,13 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = Page1;
+  menu: MenuController;
 
   pages: Array<{name: string, component: any, icon: string}>;
 
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform, menu: MenuController) {
     this.initializeApp();
+    this.menu = menu;
 
     // used for an example of ngFor and navigation
     this.pages = [
