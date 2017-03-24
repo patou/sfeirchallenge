@@ -5,10 +5,10 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CreateEntity } from '../../pages/create-entity/create-entity';
 
 @Component({
-  selector: 'music-list',
-  templateUrl: 'music-list.html'
+  selector: 'video-list',
+  templateUrl: 'video-list.html'
 })
-export class MusicList {
+export class VideoList {
   selectedItem: any;
   icons: string[];
   items: Array<{titre: string, year: number, picture: string, author: string, album: string, note: number}>;
@@ -20,12 +20,12 @@ export class MusicList {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.items = JSON.parse(localStorage.getItem('music'));
+    this.items = JSON.parse(localStorage.getItem('video'));
   }
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(MusicList, {
+    this.navCtrl.push(VideoList, {
       item: item
     });
   }

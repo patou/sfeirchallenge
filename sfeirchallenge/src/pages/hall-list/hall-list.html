@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Hall Things</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+  <ion-fab right bottom>
+   <button ion-fab (click)="addNew()"><ion-icon name="add"></ion-icon></button>
+ </ion-fab>
+  <ion-card *ngFor="let thing of things" style="height: 190px; background-color: #e74c3c;">
+    <!--<img src="assets/img/card-saopaolo.png"/>-->
+      <div class="card-title">{{thing.name}}</div>
+      <div class="card-subtitle">{{thing.count}} Objets</div>
+  </ion-card>
+
+</ion-content>

@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-page1',
-  templateUrl: 'page1.html'
+  selector: 'page-swiper',
+  templateUrl: 'swiper.html'
 })
-export class Page1 {
+export class Swiper {
 
   slides = [
       {
@@ -18,7 +18,7 @@ export class Page1 {
       {
         title: "Collectionneur?",
         description: "<b>Embarrasé par une collection importante ?</b></br>Pas le temps de prendre un papier un crayon mais tu as toujours ton téléphonne sur toi.</br>Cette appication est faite pour toi ! </br",
-        image: "assets/img/smartphone.png",
+        image: "assets/img/ica-slidebox-img-2.png",
       }
     ];
 
@@ -29,6 +29,7 @@ export class Page1 {
 
 
   createEntity() {
+    localStorage.setItem("alreadyVisited", "true");
     this.navCtrl.setRoot(CreateEntity);
   }
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { MusicList } from '../../pages/music-list/music-list';
 
 @Component({
@@ -8,7 +7,7 @@ import { MusicList } from '../../pages/music-list/music-list';
   templateUrl: 'create-entity.html'
 })
 export class CreateEntity {
-  types: Array<{name: string, icon: string}>;
+  types: Array<{name: string, icon: string, type: string}>;
   name: String;
   desc: String;
   type: String;
@@ -18,13 +17,13 @@ export class CreateEntity {
   constructor(public nav: NavController, private toastCtrl: ToastController) {
 
     this.types = [
-      { name: 'Livres', icon: 'book' },
-      { name: 'DVD', icon: 'disc' },
-      { name: 'Liste de course', icon: 'cart' },
-      { name: 'Jeux', icon: 'logo-playstation' },
-      { name: 'Musique', icon: 'musical-notes' },
-      { name: 'Voyages', icon: 'jet' },
-      { name: 'Vins', icon: 'wine' }
+      { name: 'Livres', icon: 'book', type: 'book' },
+      { name: 'DVD', icon: 'disc', type: 'video' },
+      { name: 'Liste de course', icon: 'cart', type: 'cart'},
+      { name: 'Jeux', icon: 'logo-playstation', type: 'game' },
+      { name: 'Musique', icon: 'musical-notes', type: 'music' },
+      { name: 'Voyages', icon: 'jet', type: 'travel' },
+      { name: 'Vins', icon: 'wine', type: 'wine' }
     ];
   }
 

@@ -23,7 +23,7 @@
     <ion-item>
       <ion-label floating>Son type</ion-label>
       <ion-select [(ngModel)]="type">
-        <ion-option *ngFor="let t of types" [value]="t.icon"><ion-icon [name]="t.icon" item-left></ion-icon>{{t.name}}</ion-option>
+        <ion-option *ngFor="let t of types" [value]="t.type"><ion-icon [name]="t.icon" item-left></ion-icon>{{t.name}}</ion-option>
       </ion-select>
     </ion-item>
 
