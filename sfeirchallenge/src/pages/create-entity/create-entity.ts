@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-import { MusicList } from '../../pages/music-list/music-list';
+import { HallList } from '../../pages/hall-list/hall-list';
 
 @Component({
   selector: 'create-entity',
@@ -51,13 +51,13 @@ export class CreateEntity {
       objects.push(object);
       localStorage.setItem(String(this.type), JSON.stringify(objects));
 
-      this.nav.setRoot(MusicList);
+      this.nav.setRoot(HallList);
     });
 
     toast.present();
   }
 
   save() {
-    this.presentToast("Yes, ton stuff a été renseigné avec succès.");
+    this.presentToast("Yes, ton objet a été renseigné avec succès.");
   }
 }

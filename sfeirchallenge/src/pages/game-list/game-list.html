@@ -13,30 +13,12 @@
    <button ion-fab (click)="addNew()"><ion-icon name="add"></ion-icon></button>
  </ion-fab>
 
- <ion-card *ngFor="let item of items" (click)="itemTapped($event, item)">
+ <ion-card *ngFor="let thing of things" (click)="itemTapped($event, item)">
    <ion-card-header>
-     Header
+     {{thing.name}}
    </ion-card-header>
    <ion-card-content>
-     The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+     {{thing.desc}}
    </ion-card-content>
  </ion-card>
-
-
-  <!--<ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-avatar item-left>
-        <img src="http://placehold.it/32x32">
-      </ion-avatar>
-      <h2>{{item.name}}</h2>
-      <h3>{{item.author}}</h3>
-      <p>{{item.desc}}</p>
-      <div class="item-note" item-right>
-        {{item.date}}
-      </div>
-      <div class="item-note" item-right>
-        <ion-icon *ngFor="let rate of [1,2,3,4,5]" [name]="rate <= item.note ? 'star' : 'star-outline'"></ion-icon>
-      </div>
-    </button>
-  </ion-list>-->
 </ion-content>

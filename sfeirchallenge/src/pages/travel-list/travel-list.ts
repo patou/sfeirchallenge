@@ -11,7 +11,7 @@ import { CreateEntity } from '../../pages/create-entity/create-entity';
 export class TravelList {
   selectedItem: any;
   icons: string[];
-  items: Array<{titre: string, year: number, picture: string, author: string, album: string, note: number}>;
+  things: Array<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
@@ -20,7 +20,7 @@ export class TravelList {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.items = JSON.parse(localStorage.getItem('travel'));
+    this.things = JSON.parse(localStorage.getItem('travel'));
   }
 
   itemTapped(event, item) {

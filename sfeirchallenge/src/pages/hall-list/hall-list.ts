@@ -19,20 +19,15 @@ export class HallList {
 
       if(key !== "alreadyVisited") {
         let objectByKey:Array<any> = JSON.parse(localStorage.getItem(String(key)));
-        console.log(objectByKey);
-        console.log(objectByKey.length);
         let object = {
           type : objectByKey[0].type,
           count : objectByKey.length,
           name : this.getNameFromString(objectByKey[0].type),
-          color : 'red'
+          color : this.getColorFromString(objectByKey[0].type)
         }
 
         this.things.push(object);
       }
-
-      console.log(this.things);
-
     }
 
 
@@ -58,5 +53,32 @@ export class HallList {
       default :
         return 'Inconnue';
     }
+  }
+
+  //CRACRA pareil le temps de la demo ...
+  getColorFromString(type) {
+
+    switch (type) {
+      case 'book' :
+        return '#2ecc71';
+      case 'cart' :
+          return '#3498db';
+      case 'video' :
+              return '#9b59b6';
+      case 'game' :
+          return '#95a5a6';
+      case 'music' :
+          return '#d35400';
+      case 'travel' :
+          return '#f1c40f';
+      case 'wine' :
+          return '#8e44ad';
+      default :
+        return '#2c3e50';
+    }
+  }
+
+  addNew(){
+    this.navCtrl.setRoot(CreateEntity);
   }
 }
