@@ -3,40 +3,208 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Créer une thing</ion-title>
+    <ion-title>Créer une thing <div *ngIf="type">{{type.name}}</div></ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
 
-    <ion-item>
-      <ion-label floating>Son nom</ion-label>
-      <ion-input type="text" [(ngModel)]="name"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Son auteur</ion-label>
-      <ion-input type="text" [(ngModel)]="author"></ion-input>
-    </ion-item>
+    <!-- MOCK MOCK toute cette partie est un mock à rendre dynamiue quand on aura les types définissables-->
 
     <ion-item>
       <ion-label floating>Son type</ion-label>
-      <ion-select [(ngModel)]="type">
+      <ion-select [(ngModel)]="type" placeholder="Choisir un type">
         <ion-option *ngFor="let t of types" [value]="t.type"><ion-icon [name]="t.icon" item-left></ion-icon>{{t.name}}</ion-option>
       </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="DD/MM/AAAA" [(ngModel)]="date"></ion-datetime>
-    </ion-item>
+    <div *ngIf="type === 'book'">
+      <ion-item>
+        <ion-label floating>Son titre</ion-label>
+        <ion-input type="text" [(ngModel)]="name"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Description</ion-label>
-      <ion-textarea [(ngModel)]="desc"></ion-textarea>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Son auteur</ion-label>
+        <ion-input type="text" [(ngModel)]="author"></ion-input>
+      </ion-item>
 
-    <button ion-button full (click)="save()">Créer</button>
+      <ion-item>
+        <ion-label floating>ISBN</ion-label>
+        <ion-input type="text" [(ngModel)]="isbn"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Date de d'édition</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="date"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Résumé</ion-label>
+        <ion-textarea [(ngModel)]="desc"></ion-textarea>
+      </ion-item>
+
+      <button ion-button full (click)="takePicture()">Sa photo</button>
+      <img [src]="base64Image" *ngIf="base64Image" />
+
+    </div>
+    <div *ngIf="type === 'video'">
+      <ion-item>
+        <ion-label floating>Son titre</ion-label>
+        <ion-input type="text" [(ngModel)]="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Son réalisateur</ion-label>
+        <ion-input type="text" [(ngModel)]="producer"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Acteurs principaux</ion-label>
+        <ion-input type="text" [(ngModel)]="actors"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Date de sortie</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="date"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Synopsis</ion-label>
+        <ion-textarea [(ngModel)]="synopsis"></ion-textarea>
+      </ion-item>
+
+      <button ion-button full (click)="takePicture()">Sa photo</button>
+      <img [src]="base64Image" *ngIf="base64Image" />
+    </div>
+    <div *ngIf="type === 'cart'">
+      <ion-item>
+        <ion-label floating>Nom de l'article</ion-label>
+        <ion-input type="text" [(ngModel)]="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Sa marque</ion-label>
+        <ion-input type="text" [(ngModel)]="brand"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Unité</ion-label>
+        <ion-input type="text" [(ngModel)]="unit"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Quantité</ion-label>
+        <ion-input type="text" [(ngModel)]="quantity"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Prix</ion-label>
+        <ion-input type="text" [(ngModel)]="price"></ion-input>
+      </ion-item>
+
+      <button ion-button full (click)="takePicture()">Sa photo</button>
+      <img [src]="base64Image" *ngIf="base64Image" />
+
+    </div>
+
+    <div *ngIf="type === 'game'">
+      <ion-item>
+        <ion-label floating>Nom du jeu</ion-label>
+        <ion-input type="text" [(ngModel)]="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Son editeur</ion-label>
+        <ion-input type="text" [(ngModel)]="editor"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Genre</ion-label>
+        <ion-input type="text" [(ngModel)]="genre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Plateforme</ion-label>
+        <ion-input type="text" [(ngModel)]="plaform"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Année de sortie</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="year"></ion-datetime>
+      </ion-item>
+
+      <button ion-button full (click)="takePicture()">Sa photo</button>
+      <img [src]="base64Image" *ngIf="base64Image" />
+
+    </div>
+
+    <div *ngIf="type === 'music'">
+      <ion-item>
+        <ion-label floating>Nom de l'album</ion-label>
+        <ion-input type="text" [(ngModel)]="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Artiste</ion-label>
+        <ion-input type="text" [(ngModel)]="artist"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Genre</ion-label>
+        <ion-input type="text" [(ngModel)]="genre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Format</ion-label>
+        <ion-input type="text" [(ngModel)]="format"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Année de sortie</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="year"></ion-datetime>
+      </ion-item>
+
+      <button ion-button full (click)="takePicture()">Sa photo</button>
+      <img [src]="base64Image" *ngIf="base64Image" />
+
+    </div>
+
+    <div *ngIf="type === 'travel'">
+      <ion-item>
+        <ion-label floating>Lieux</ion-label>
+        <ion-input type="text" [(ngModel)]="where"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Date</ion-label>
+        <ion-input type="text" [(ngModel)]="date"></ion-input>
+      </ion-item>
+
+    </div>
+
+    <div *ngIf="type === 'wine'">
+      <ion-item>
+        <ion-label floating>Nom</ion-label>
+        <ion-input type="text" [(ngModel)]="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Année</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="year"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Variété</ion-label>
+        <ion-input type="text" [(ngModel)]="variety"></ion-input>
+      </ion-item>
+
+      <button ion-button full (click)="takePicture()">Sa photo</button>
+      <img [src]="base64Image" *ngIf="base64Image" />
+    </div>
+
+
+    <button ion-button full (click)="save()" [disabled]="!type">Créer</button>
   </ion-list>
 </ion-content>

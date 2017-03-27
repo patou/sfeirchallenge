@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
+import { Camera } from 'ionic-native';
 import { HallList } from '../../pages/hall-list/hall-list';
 
 @Component({
@@ -13,6 +14,7 @@ export class CreateEntity {
   type: String;
   date : Date;
   author : String;
+  image : any;
 
   constructor(public nav: NavController, private toastCtrl: ToastController) {
 
@@ -41,6 +43,7 @@ export class CreateEntity {
         type : this.type,
         date : this.date,
         author : this.author,
+        image : this.image
       };
       console.log(object);
       let objects = [];
@@ -55,6 +58,19 @@ export class CreateEntity {
     });
 
     toast.present();
+  }
+
+  takePicture(name){
+    Camera.getPicture({
+        destinationType: Camera.DestinationType.DATA_URL,
+        targetWidth: 1000,
+        targetHeight: 1000
+    }).then((imageData) => {
+      // imageData is a base64 encoded string
+        this.image = "data:image/jpeg;base64," + imageData;
+    }, (err) => {
+        console.log(err);
+    });
   }
 
   save() {
