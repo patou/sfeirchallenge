@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "Hall Things",
+  "short_name": "HallThings",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
