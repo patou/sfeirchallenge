@@ -20,7 +20,7 @@ export class GameList {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.things = JSON.parse(localStorage.getItem('game'));
+    this.things = JSON.parse(localStorage.getItem('hall-game'));
   }
 
   itemTapped(event, item) {

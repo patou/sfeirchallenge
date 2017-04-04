@@ -47,12 +47,12 @@ export class CreateEntity {
       };
       console.log(object);
       let objects = [];
-      let fromDB = localStorage.getItem(String(this.type));
+      let fromDB = localStorage.getItem('hall-'+this.type);
       if(fromDB) {
         objects =  JSON.parse(fromDB);
       }
       objects.push(object);
-      localStorage.setItem(String(this.type), JSON.stringify(objects));
+      localStorage.setItem('hall-'+this.type, JSON.stringify(objects));
 
       this.nav.setRoot(HallList);
     });

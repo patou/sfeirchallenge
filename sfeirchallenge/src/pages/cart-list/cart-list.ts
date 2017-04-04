@@ -20,7 +20,7 @@ export class CartList {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.things = JSON.parse(localStorage.getItem('cart'));
+    this.things = JSON.parse(localStorage.getItem('hell-cart'));
   }
 
   itemTapped(event, item) {

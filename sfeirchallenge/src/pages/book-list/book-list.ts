@@ -20,7 +20,7 @@ export class BookList {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.things = JSON.parse(localStorage.getItem('book'));
+    this.things = JSON.parse(localStorage.getItem('hall-book'));
   }
 
   itemTapped(event, item) {

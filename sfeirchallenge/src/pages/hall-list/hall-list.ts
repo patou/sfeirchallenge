@@ -17,7 +17,7 @@ export class HallList {
 
     for (var key in localStorage){
 
-      if(key !== "alreadyVisited") {
+      if(key.startsWith("hall-")) {
         let objectByKey:Array<any> = JSON.parse(localStorage.getItem(String(key)));
         let object = {
           type : objectByKey[0].type,

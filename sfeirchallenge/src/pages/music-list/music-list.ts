@@ -20,7 +20,7 @@ export class MusicList {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.things = JSON.parse(localStorage.getItem('music'));
+    this.things = JSON.parse(localStorage.getItem('hall-music'));
   }
 
   itemTapped(event, item) {

@@ -20,7 +20,7 @@ export class WineList {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.things = JSON.parse(localStorage.getItem('wine'));
+    this.things = JSON.parse(localStorage.getItem('hall-wine'));
   }
 
   itemTapped(event, item) {

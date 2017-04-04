@@ -20,7 +20,7 @@ export class TravelList {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.things = JSON.parse(localStorage.getItem('travel'));
+    this.things = JSON.parse(localStorage.getItem('hall-travel'));
   }
 
   itemTapped(event, item) {
