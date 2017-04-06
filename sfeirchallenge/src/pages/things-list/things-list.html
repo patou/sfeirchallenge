@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Mes vins</ion-title>
+    <ion-title>Mes Liste de courses</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
    <button ion-fab (click)="addNew()"><ion-icon name="add"></ion-icon></button>
  </ion-fab>
 
- <ion-card *ngFor="let thing of things" (click)="itemTapped($event, item)">
+ <ion-card *ngFor="let thing of things">
    <ion-card-header>
      {{thing.name}}
    </ion-card-header>

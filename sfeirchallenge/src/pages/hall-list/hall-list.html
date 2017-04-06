@@ -13,7 +13,7 @@
  </ion-fab>
 
   <div *ngFor="let thing of things">
-    <ion-card style="height: 190px;" [ngStyle]="{'background-color': thing.color}">
+    <ion-card style="height: 190px;" [ngStyle]="{'background-color': thing.color}" (click)="openPage(thing)">
       <!--<img src="assets/img/card-saopaolo.png"/>-->
         <div class="card-title">{{thing.name}}</div>
         <div class="card-subtitle">{{thing.count}} Things</div>
