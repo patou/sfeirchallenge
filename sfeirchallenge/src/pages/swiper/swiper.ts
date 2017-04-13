@@ -1,4 +1,4 @@
-import {CreateEntity} from "../create-entity/create-entity";
+import { SignupPage } from '../signup/signup';
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
@@ -30,6 +30,6 @@ export class Swiper {
 
   createEntity() {
     localStorage.setItem("alreadyVisited", "true");
-    this.navCtrl.setRoot(CreateEntity);
+    this.navCtrl.setRoot(SignupPage);
   }
 }

@@ -1,7 +1,8 @@
-<ion-menu [content]="content">
+<ion-split-pane>
+<ion-menu id="loggedInMenu" [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Hall Things</ion-title>
+      <img src="assets/img/HallThings.png" alt="HallThings">
     </ion-toolbar>
   </ion-header>
 
@@ -11,7 +12,7 @@
         <ion-icon name="apps" item-left></ion-icon>
         Mes things
       </button>
-      <button menuClose ion-item *ngFor="let p of things" (click)="openPage(p)">
+      <button menuClose ion-item *ngFor="let p of things" (click)="openHall(p)">
         <ion-icon [name]="p.icon" item-left></ion-icon>
         {{p.name}}
       </button>
@@ -22,14 +23,39 @@
         <button ion-button full (click)="openPage(p)">
           Créer un type
         </button>
-        <button menuClose ion-item (click)="openSettings()">
-          <ion-icon name="settings" item-left></ion-icon>
-          Parametres
+        <button ion-item menuClose *ngFor="let p of loggedInPages" (click)="openPage(p)">
+          <ion-icon item-left [name]="p.icon" [color]="isActive(p)"></ion-icon>
+          {{p.title}}
         </button>
       </div>
   </ion-footer>
 
 </ion-menu>
+<!-- logged out menu -->
+<ion-menu id="loggedOutMenu" [content]="content">
+
+  <ion-header>
+    <ion-toolbar>
+      <img src="assets/img/HallThings.png" alt="HallThings">
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="outer-content">
+
+    <ion-list>
+      <ion-list-header>
+        Account
+      </ion-list-header>
+      <button ion-item menuClose *ngFor="let p of loggedOutPages" (click)="openPage(p)">
+        <ion-icon item-left [name]="p.icon" [color]="isActive(p)"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+
+  </ion-content>
+
+</ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>
+</ion-split-pane>

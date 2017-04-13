@@ -15,6 +15,7 @@
   <div *ngFor="let thing of things">
     <ion-card style="height: 190px;" [ngStyle]="{'background-color': thing.color}" (click)="openPage(thing)">
       <!--<img src="assets/img/card-saopaolo.png"/>-->
+        <ion-icon [name]="thing.icon" large></ion-icon>
         <div class="card-title">{{thing.name}}</div>
         <div class="card-subtitle">{{thing.count}} Things</div>
         <div class="card-bottom"><ion-icon ios="ios-swap" md="md-swap">  Partager</ion-icon>   <ion-icon ios="ios-chatbubbles" md="md-chatbubbles">  Comparer</ion-icon> </div>

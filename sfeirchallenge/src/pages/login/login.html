@@ -1,0 +1,46 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>Connexion</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<form #loginForm="ngForm" novalidate>
+		<ion-list no-lines>
+			<ion-item>
+				<ion-label stacked color="primary">Votre email</ion-label>
+				<ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+					required>
+				</ion-input>
+			</ion-item>
+			<p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
+				L'email est requis
+			</p>
+
+			<ion-item>
+				<ion-label stacked color="primary">Password</ion-label>
+				<ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+				</ion-input>
+			</ion-item>
+			<p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
+				Le mot de passe est requis
+			</p>
+		</ion-list>
+
+		<ion-row responsive-sm>
+			<ion-col>
+				<button ion-button (click)="onLogin(loginForm)" type="submit" block>Se connecter</button>
+			</ion-col>
+		</ion-row>
+		<div>
+			<p ion-text color="danger" padding-left>{{message}}</p>
+		</div>
+		<ion-list inset>
+			<button ion-item (click)="signup()">Pas de compte ?</button>
+		</ion-list>
+	</form>
+
+</ion-content>
