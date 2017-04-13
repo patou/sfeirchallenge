@@ -13,7 +13,7 @@ import { SettingsPage } from '../pages/settings/settings';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class HallThingsApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any;

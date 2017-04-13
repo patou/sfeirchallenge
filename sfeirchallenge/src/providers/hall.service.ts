@@ -30,7 +30,7 @@ export class HallService {
         return this.halls.find(hall => hall.type === type);
     }
 
-    private update() {
+    update() {
       this.halls = [];
       HALLS.forEach(hall =>  {
         let things = localStorage.getItem('hall-'+hall.type);

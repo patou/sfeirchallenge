@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { HallThingsApp } from './app.component';
 import { Swiper } from '../pages/swiper/swiper';
 import { HallList } from '../pages/hall-list/hall-list';
 import { ThingsList } from '../pages/things-list/things-list';
@@ -10,7 +10,7 @@ import { HallService } from '../providers/hall.service';
 
 @NgModule({
   declarations: [
-    MyApp,
+    HallThingsApp,
     Swiper,
     HallList,
     ThingsList,
@@ -18,11 +18,11 @@ import { HallService } from '../providers/hall.service';
     CreateEntity
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(HallThingsApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    HallThingsApp,
     Swiper,
     HallList,
     ThingsList,
