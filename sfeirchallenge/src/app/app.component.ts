@@ -2,8 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { Hall } from './hallthings';
-import { HallService } from './hall.service';
+import { Hall } from '../providers/hallthings';
+import { HallService } from '../providers/hall.service';
 import { Swiper } from '../pages/swiper/swiper';
 import { HallList } from '../pages/hall-list/hall-list';
 import { ThingsList } from '../pages/things-list/things-list';

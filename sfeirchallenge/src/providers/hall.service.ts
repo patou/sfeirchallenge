@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Hall } from '../providers/hallthings';
+import { Hall } from './hallthings';
 
 export const HALLS: Hall[] = [
   { name: 'Mes Livres', color: '#2ecc71', icon: 'book', type: 'book'},
@@ -30,7 +30,7 @@ export class HallService {
         return this.halls.find(hall => hall.type === type);
     }
 
-    update() {
+    private update() {
       this.halls = [];
       HALLS.forEach(hall =>  {
         let things = localStorage.getItem('hall-'+hall.type);

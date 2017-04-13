@@ -6,7 +6,7 @@ import { HallList } from '../pages/hall-list/hall-list';
 import { ThingsList } from '../pages/things-list/things-list';
 import { SettingsPage } from '../pages/settings/settings';
 import { CreateEntity } from '../pages/create-entity/create-entity';
-import { HallService } from './hall.service';
+import { HallService } from '../providers/hall.service';
 
 @NgModule({
   declarations: [

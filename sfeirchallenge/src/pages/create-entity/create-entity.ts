@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { Camera } from 'ionic-native';
-import { HallList } from '../../pages/hall-list/hall-list';
+import { HallList } from '../hall-list/hall-list';
+import { HallService } from "../../providers/hall.service";
 
 @Component({
   selector: 'create-entity',
@@ -16,17 +17,8 @@ export class CreateEntity {
   author : String;
   image : any;
 
-  constructor(public nav: NavController, private toastCtrl: ToastController) {
-
-    this.types = [
-      { name: 'Livres', icon: 'book', type: 'book' },
-      { name: 'DVD', icon: 'disc', type: 'video' },
-      { name: 'Liste de course', icon: 'cart', type: 'cart'},
-      { name: 'Jeux', icon: 'logo-playstation', type: 'game' },
-      { name: 'Musique', icon: 'musical-notes', type: 'music' },
-      { name: 'Voyages', icon: 'jet', type: 'travel' },
-      { name: 'Vins', icon: 'wine', type: 'wine' }
-    ];
+  constructor(public nav: NavController, private toastCtrl: ToastController, private HallService: HallService) {
+    this.types = HallService.getHallsAvailable();
   }
 
   presentToast(text) {
@@ -53,7 +45,7 @@ export class CreateEntity {
       }
       objects.push(object);
       localStorage.setItem('hall-'+this.type, JSON.stringify(objects));
-
+      this.HallService.update();
       this.nav.setRoot(HallList);
     });
 

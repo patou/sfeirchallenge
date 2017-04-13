@@ -1,4 +1,3 @@
-import {HallService} from "../../app/hall.service";
 import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
@@ -6,7 +5,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ThingsList } from '../things-list/things-list';
 import { CreateEntity } from '../create-entity/create-entity';
 
-import { Hall } from '../../app/hallthings'
+import { Hall } from '../../providers/hallthings'
+import { HallService } from '../../providers/hall.service'
 
 @Component({
   selector: 'page-hall-list',
