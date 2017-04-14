@@ -9,12 +9,15 @@ import { HallList } from '../pages/hall-list/hall-list';
 import { ThingsList } from '../pages/things-list/things-list';
 import { SettingsPage } from '../pages/settings/settings';
 import { CreateEntity } from '../pages/create-entity/create-entity';
+import { CreateHall } from '../pages/create-hall/create-hall';
 import { SignupPage } from '../pages/signup/signup';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 
 import { HallService } from '../providers/hall.service';
 import { UserData } from '../providers/user-data';
+
+import { OptionIcon } from '../component/ion-option-icon';
 
 export const myFirebaseConfig = {
     apiKey: "AIzaSyBgnWNzntzgNTHNUJlqkm5EEv-3bM1LzyA",
@@ -34,8 +37,10 @@ export const myFirebaseAuthConfig = {
   declarations: [
     HallThingsApp,
     Swiper,
+    OptionIcon,
     HallList,
     ThingsList,
+    CreateHall,
     SettingsPage,
     AccountPage,
     LoginPage,
@@ -53,6 +58,7 @@ export const myFirebaseAuthConfig = {
     Swiper,
     HallList,
     ThingsList,
+    CreateHall,
     SettingsPage,
     AccountPage,
     LoginPage,
