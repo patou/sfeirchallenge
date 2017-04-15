@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Hall } from './hallthings';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 export const HALLS: Hall[] = [
   { name: 'Mes Livres', color: '#2ecc71', icon: 'book', type: 'book'},
@@ -13,32 +14,24 @@ export const HALLS: Hall[] = [
 
 @Injectable()
 export class HallService {
-    halls : Array<Hall>;
-    constructor() {
-      this.update();
+    halls : FirebaseListObservable<Hall[]>;
+    constructor(af: AngularFire) {
+      this.halls = af.database.list('halls');
     }
 
     getHallsAvailable(): Hall[] {
         return HALLS;
     }
 
-    getHalls(): Hall[] {
+    getHalls(): FirebaseListObservable<Hall[]> {
         return this.halls;
     }
 
     getHall(type: string): Hall {
-        return this.halls.find(hall => hall.type === type);
+        return null;//this.halls.find(hall => hall.type === type);
     }
 
-    update() {
-      this.halls = [];
-      HALLS.forEach(hall =>  {
-        let things = localStorage.getItem('hall-'+hall.type);
-        if (things != null) {
-          hall.things = JSON.parse(things);
-          hall.count = hall.things.length;
-          this.halls.push(hall);
-        }
-      });
+    create(hall:Hall) {
+      this.halls.push(hall);
     }
 }

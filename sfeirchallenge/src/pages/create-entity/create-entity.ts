@@ -45,7 +45,6 @@ export class CreateEntity {
       }
       objects.push(object);
       localStorage.setItem('hall-'+this.type, JSON.stringify(objects));
-      this.HallService.update();
       this.nav.setRoot(HallList);
     });
 

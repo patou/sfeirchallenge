@@ -18,7 +18,7 @@ export class HallList {
   things : Array<Hall> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private HallService: HallService) {
-    this.things = HallService.getHalls();
+    HallService.getHalls().subscribe(list => this.things = list);
   }
 
   openPage(page) {

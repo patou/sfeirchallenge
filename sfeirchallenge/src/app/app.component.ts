@@ -56,7 +56,8 @@ export class HallThingsApp {
           this.rootPage = LoginPage;
         }
       });
-    }else {
+    } else {
+      this.enableMenu(false);
       this.rootPage = Swiper;
     }
 
@@ -65,7 +66,7 @@ export class HallThingsApp {
     this.menu = menu;
 
     // used for an example of ngFor and navigation
-    this.things = HallService.getHalls();
+    HallService.getHalls().subscribe(list => this.things = list);
 
   }
 
@@ -121,7 +122,6 @@ enableMenu(loggedIn: boolean) {
   }
 
   isActive(page: PageInterface) {
-    let childNav = this.nav.getActiveChildNav();
 
     // Tabs are a special case because they have their own navigation
     if (this.nav.getActive() && this.nav.getActive().component === page.component) {
@@ -135,7 +135,7 @@ enableMenu(loggedIn: boolean) {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(HallList);
   }
-  
+
   openCreateHall() {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
