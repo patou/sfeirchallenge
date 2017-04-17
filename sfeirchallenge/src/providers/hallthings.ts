@@ -8,3 +8,8 @@ export class Hall {
   owner?: Array<string>;
   shared?: Array<string>;
 }
+export class Thing {
+  created: Date;
+  by: string;
+  values: any;
+}

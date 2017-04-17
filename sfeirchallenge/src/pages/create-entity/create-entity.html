@@ -12,96 +12,89 @@
 
     <!-- MOCK MOCK toute cette partie est un mock à rendre dynamiue quand on aura les types définissables-->
 
-    <ion-item>
-      <ion-label>Son type</ion-label>
-      <ion-select [(ngModel)]="type" placeholder="Choisir un type">
-        <ion-option *ngFor="let t of types" [value]="t.type"><ion-icon [name]="t.icon" item-left></ion-icon>{{t.name}}</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <div *ngIf="type === 'book'">
+    <div *ngIf="hall.type === 'book'">
       <ion-item>
         <ion-label floating>Son titre</ion-label>
-        <ion-input type="text" [(ngModel)]="name"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.name"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Son auteur</ion-label>
-        <ion-input type="text" [(ngModel)]="author"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.author"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>ISBN</ion-label>
-        <ion-input type="text" [(ngModel)]="isbn"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.isbn"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Date de d'édition</ion-label>
-        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="date"></ion-datetime>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="values.date"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Résumé</ion-label>
-        <ion-textarea [(ngModel)]="desc"></ion-textarea>
+        <ion-textarea [(ngModel)]="values.desc"></ion-textarea>
       </ion-item>
 
       <button ion-button full (click)="takePicture()">Sa photo</button>
       <img [src]="base64Image" *ngIf="base64Image" />
 
     </div>
-    <div *ngIf="type === 'video'">
+    <div *ngIf="hall.type === 'video'">
       <ion-item>
         <ion-label floating>Son titre</ion-label>
-        <ion-input type="text" [(ngModel)]="name"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.name"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Son réalisateur</ion-label>
-        <ion-input type="text" [(ngModel)]="producer"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.producer"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Acteurs principaux</ion-label>
-        <ion-input type="text" [(ngModel)]="actors"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.actors"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Date de sortie</ion-label>
-        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="date"></ion-datetime>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="values.date"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Synopsis</ion-label>
-        <ion-textarea [(ngModel)]="synopsis"></ion-textarea>
+        <ion-textarea [(ngModel)]="values.synopsis"></ion-textarea>
       </ion-item>
 
       <button ion-button full (click)="takePicture()">Sa photo</button>
       <img [src]="base64Image" *ngIf="base64Image" />
     </div>
-    <div *ngIf="type === 'cart'">
+    <div *ngIf="hall.type === 'cart'">
       <ion-item>
         <ion-label floating>Nom de l'article</ion-label>
-        <ion-input type="text" [(ngModel)]="name"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.name"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Sa marque</ion-label>
-        <ion-input type="text" [(ngModel)]="brand"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.brand"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Unité</ion-label>
-        <ion-input type="text" [(ngModel)]="unit"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.unit"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Quantité</ion-label>
-        <ion-input type="text" [(ngModel)]="quantity"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.quantity"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Prix</ion-label>
-        <ion-input type="text" [(ngModel)]="price"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.price"></ion-input>
       </ion-item>
 
       <button ion-button full (click)="takePicture()">Sa photo</button>
@@ -109,30 +102,30 @@
 
     </div>
 
-    <div *ngIf="type === 'game'">
+    <div *ngIf="hall.type === 'game'">
       <ion-item>
         <ion-label floating>Nom du jeu</ion-label>
-        <ion-input type="text" [(ngModel)]="name"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.name"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Son editeur</ion-label>
-        <ion-input type="text" [(ngModel)]="editor"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.editor"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Genre</ion-label>
-        <ion-input type="text" [(ngModel)]="genre"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.genre"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Plateforme</ion-label>
-        <ion-input type="text" [(ngModel)]="plaform"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.plaform"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Année de sortie</ion-label>
-        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="year"></ion-datetime>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="values.year"></ion-datetime>
       </ion-item>
 
       <button ion-button full (click)="takePicture()">Sa photo</button>
@@ -140,30 +133,30 @@
 
     </div>
 
-    <div *ngIf="type === 'music'">
+    <div *ngIf="hall.type === 'music'">
       <ion-item>
         <ion-label floating>Nom de l'album</ion-label>
-        <ion-input type="text" [(ngModel)]="name"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.name"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Artiste</ion-label>
-        <ion-input type="text" [(ngModel)]="artist"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.artist"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Genre</ion-label>
-        <ion-input type="text" [(ngModel)]="genre"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.genre"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Format</ion-label>
-        <ion-input type="text" [(ngModel)]="format"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.format"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Année de sortie</ion-label>
-        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="year"></ion-datetime>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="values.year"></ion-datetime>
       </ion-item>
 
       <button ion-button full (click)="takePicture()">Sa photo</button>
@@ -171,33 +164,33 @@
 
     </div>
 
-    <div *ngIf="type === 'travel'">
+    <div *ngIf="hall.type === 'travel'">
       <ion-item>
         <ion-label floating>Lieux</ion-label>
-        <ion-input type="text" [(ngModel)]="where"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.where"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Date</ion-label>
-        <ion-input type="text" [(ngModel)]="date"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.date"></ion-input>
       </ion-item>
 
     </div>
 
-    <div *ngIf="type === 'wine'">
+    <div *ngIf="hall.type === 'wine'">
       <ion-item>
         <ion-label floating>Nom</ion-label>
-        <ion-input type="text" [(ngModel)]="name"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.name"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Année</ion-label>
-        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="year"></ion-datetime>
+        <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="values.year"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Variété</ion-label>
-        <ion-input type="text" [(ngModel)]="variety"></ion-input>
+        <ion-input type="text" [(ngModel)]="values.variety"></ion-input>
       </ion-item>
 
       <button ion-button full (click)="takePicture()">Sa photo</button>
@@ -205,6 +198,6 @@
     </div>
 
 
-    <button ion-button full (click)="save()" [disabled]="!type">Créer</button>
+    <button ion-button full (click)="save()" [disabled]="!hall.type">Créer</button>
   </ion-list>
 </ion-content>

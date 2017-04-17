@@ -31,7 +31,7 @@ export class HallService {
         return this.af.database.object("halls/"+id);//this.halls.find(hall => hall.type === type);
     }
 
-    create(hall:Hall) {
-      this.halls.push(hall);
+    create(hall:Hall):firebase.database.ThenableReference {
+      return this.halls.push(hall);
     }
 }

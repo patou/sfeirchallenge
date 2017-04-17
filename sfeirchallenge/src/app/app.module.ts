@@ -15,6 +15,7 @@ import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 
 import { HallService } from '../providers/hall.service';
+import { ThingsService } from '../providers/things.service';
 import { UserData } from '../providers/user-data';
 
 import { OptionIcon } from '../component/ion-option-icon';
@@ -65,6 +66,6 @@ export const myFirebaseAuthConfig = {
     SignupPage,
     CreateEntity
   ],
-  providers: [HallService, UserData]
+  providers: [HallService, ThingsService, UserData]
 })
 export class AppModule {}

@@ -1,25 +1,30 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { Camera } from 'ionic-native';
 import { HallList } from '../hall-list/hall-list';
 import { HallService } from "../../providers/hall.service";
-import { Hall } from "../../providers/hallthings";
+import { ThingsService } from "../../providers/things.service";
+import { UserData } from "../../providers/user-data";
+import { Hall, Thing } from "../../providers/hallthings";
 
 @Component({
   selector: 'create-entity',
   templateUrl: 'create-entity.html'
 })
 export class CreateEntity {
-  types: Array<Hall>;
-  name: String;
-  desc: String;
-  type: String;
-  date : Date;
-  author : String;
-  image : any;
+  hall: Hall;
+  uid: string;
+  hallId: string;
+  values = {};
 
-  constructor(public nav: NavController, private toastCtrl: ToastController, private HallService: HallService) {
-    HallService.getHalls().subscribe(list => this.types = list);
+  constructor(public nav: NavController, public navParams: NavParams, private toastCtrl: ToastController, private HallService: HallService, private ThingsService: ThingsService, private UserData: UserData) {
+    this.hallId = navParams.get('id');
+    HallService.getHall(this.hallId).subscribe(hall => {
+      this.hall = hall;
+      console.log(hall);
+    });
+    UserData.getUid().then(uid => this.uid = uid);
+
   }
 
   presentToast(text) {
@@ -30,22 +35,6 @@ export class CreateEntity {
     });
 
     toast.onDidDismiss(() => {
-      let object = {
-        name : this.name,
-        desc : this.desc,
-        type : this.type,
-        date : this.date,
-        author : this.author,
-        image : this.image
-      };
-      console.log(object);
-      let objects = [];
-      let fromDB = localStorage.getItem('hall-'+this.type);
-      if(fromDB) {
-        objects =  JSON.parse(fromDB);
-      }
-      objects.push(object);
-      localStorage.setItem('hall-'+this.type, JSON.stringify(objects));
       this.nav.setRoot(HallList);
     });
 
@@ -59,13 +48,20 @@ export class CreateEntity {
         targetHeight: 1000
     }).then((imageData) => {
       // imageData is a base64 encoded string
-        this.image = "data:image/jpeg;base64," + imageData;
+        //this.image = "data:image/jpeg;base64," + imageData;
     }, (err) => {
         console.log(err);
     });
   }
 
   save() {
-    this.presentToast("Yes, ton objet a été renseigné avec succès.");
+    let thing : Thing = {
+      created: new Date(),
+      by: this.uid,
+      values: this.values
+    };
+    this.ThingsService.create(this.hallId, thing).then(() => {
+        this.presentToast("Yes, ton objet a été renseigné avec succès.");
+    });
   }
 }

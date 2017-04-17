@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { HallList } from "../hall-list/hall-list";
 import { HallService } from "../../providers/hall.service";
 import { UserData } from "../../providers/user-data";
 import { Hall } from "../../providers/hallthings";
@@ -22,7 +23,7 @@ export class CreateHall {
    createHall(template:Hall) {
      if (this.name) {
        let hall:Hall = {name : this.name, icon: this.icon || template.icon, type: template.type, color : template.color, count: 0, owner: [this.uid], shared:[this.uid] };
-       this.HallService.create(hall);
+       this.HallService.create(hall).then(() => this.navCtrl.setRoot(HallList));
      }
    }
 }
