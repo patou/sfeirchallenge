@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Hall } from './hallthings';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 export const HALLS: Hall[] = [
   { name: 'Mes Livres', color: '#2ecc71', icon: 'book', type: 'book'},
@@ -15,7 +15,7 @@ export const HALLS: Hall[] = [
 @Injectable()
 export class HallService {
     halls : FirebaseListObservable<Hall[]>;
-    constructor(af: AngularFire) {
+    constructor(private af: AngularFire) {
       this.halls = af.database.list('halls');
     }
 
@@ -27,8 +27,8 @@ export class HallService {
         return this.halls;
     }
 
-    getHall(type: string): Hall {
-        return null;//this.halls.find(hall => hall.type === type);
+    getHall(id: string): FirebaseObjectObservable<Hall> {
+        return this.af.database.object("halls/"+id);//this.halls.find(hall => hall.type === type);
     }
 
     create(hall:Hall) {

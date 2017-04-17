@@ -13,7 +13,7 @@
     <!-- MOCK MOCK toute cette partie est un mock à rendre dynamiue quand on aura les types définissables-->
 
     <ion-item>
-      <ion-label floating>Son type</ion-label>
+      <ion-label>Son type</ion-label>
       <ion-select [(ngModel)]="type" placeholder="Choisir un type">
         <ion-option *ngFor="let t of types" [value]="t.type"><ion-icon [name]="t.icon" item-left></ion-icon>{{t.name}}</ion-option>
       </ion-select>

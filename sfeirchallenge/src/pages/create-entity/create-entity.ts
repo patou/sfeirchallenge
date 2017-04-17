@@ -3,13 +3,14 @@ import { NavController, ToastController } from 'ionic-angular';
 import { Camera } from 'ionic-native';
 import { HallList } from '../hall-list/hall-list';
 import { HallService } from "../../providers/hall.service";
+import { Hall } from "../../providers/hallthings";
 
 @Component({
   selector: 'create-entity',
   templateUrl: 'create-entity.html'
 })
 export class CreateEntity {
-  types: Array<{name: string, icon: string, type: string}>;
+  types: Array<Hall>;
   name: String;
   desc: String;
   type: String;
@@ -18,7 +19,7 @@ export class CreateEntity {
   image : any;
 
   constructor(public nav: NavController, private toastCtrl: ToastController, private HallService: HallService) {
-    this.types = HallService.getHallsAvailable();
+    HallService.getHalls().subscribe(list => this.types = list);
   }
 
   presentToast(text) {

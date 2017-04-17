@@ -103,7 +103,7 @@ enableMenu(loggedIn: boolean) {
   openHall(hall) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(ThingsList, {type: hall.type});
+    this.nav.setRoot(ThingsList, {id: hall.$key});
   }
 
   openPage(page: PageInterface) {

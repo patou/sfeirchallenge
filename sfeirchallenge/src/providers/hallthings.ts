@@ -5,4 +5,6 @@ export class Hall {
   color: string;
   count?: number;
   things?: Array<any>;
+  owner?: Array<string>;
+  shared?: Array<string>;
 }
