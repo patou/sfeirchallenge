@@ -1,15 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Hall } from './hallthings';
+import { Hall, Model } from './hallthings';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
-export const HALLS: Hall[] = [
-  { name: 'Mes Livres', color: '#2ecc71', icon: 'book', type: 'book'},
-  { name: 'Mes DVD', color: '#9b59b6', icon: 'disc', type: 'video' },
-  { name: 'Ma liste de course', color: '#3498db', icon: 'cart', type:'cart' },
-  { name: 'Mes jeux', color: '#95a5a6', icon: 'logo-playstation', type:'game' },
-  { name: 'Ma musique', color: '#d35400', icon: 'musical-notes', type: 'music' },
-  { name: 'Mes voyages', color: '#f1c40f', icon: 'jet', type: 'travel' },
-  { name: 'Mes vins', color: '#8e44ad', icon: 'wine', type: 'wine' }
+export const HALLS: Model[] = [
+  { name: 'Mes Livres', color: '#2ecc71', icon: 'book', type: 'book', html:`
+    <ion-card-header>{{name}}</ion-card-header>
+    <ion-card-content>{{author}}</ion-card-content>
+  `},
+  { name: 'Mes DVD', color: '#9b59b6', icon: 'disc', type: 'video' , html:`
+      <ion-card-header>{{name}}</ion-card-header>
+      <ion-card-content>{{producer}}</ion-card-content>
+      `},
+  { name: 'Ma liste de course', color: '#3498db', icon: 'cart', type:'cart' , html:`
+    <ion-card-header>{{name}}</ion-card-header>
+    <ion-card-content>{{brand}}</ion-card-content>
+  `},
+  { name: 'Mes jeux', color: '#95a5a6', icon: 'logo-playstation', type:'game' , html:`
+    <ion-card-header>{{name}}</ion-card-header>
+    <ion-card-content>{{editor}}</ion-card-content>
+  `},
+  { name: 'Ma musique', color: '#d35400', icon: 'musical-notes', type: 'music' , html:`
+    <ion-card-header>{{name}}</ion-card-header>
+    <ion-card-content>{{artist}}</ion-card-content>
+  `},
+  { name: 'Mes voyages', color: '#f1c40f', icon: 'jet', type: 'travel' , html:`
+    <ion-card-header>{{name}}</ion-card-header>
+    <ion-card-content>{{where}}</ion-card-content>
+  `},
+  { name: 'Mes vins', color: '#8e44ad', icon: 'wine', type: 'wine' , html:`
+    <ion-card-header>{{name}}</ion-card-header>
+    <ion-card-content>{{variety}}</ion-card-content>
+  `}
 ];
 
 @Injectable()
@@ -19,7 +40,7 @@ export class HallService {
       this.halls = af.database.list('halls');
     }
 
-    getHallsAvailable(): Hall[] {
+    getHallsAvailable(): Model[] {
         return HALLS;
     }
 
@@ -29,6 +50,10 @@ export class HallService {
 
     getHall(id: string): FirebaseObjectObservable<Hall> {
         return this.af.database.object("halls/"+id);//this.halls.find(hall => hall.type === type);
+    }
+
+    getModel(type: string): Model {
+      return HALLS.find(el => el.type == type)
     }
 
     create(hall:Hall):firebase.database.ThenableReference {

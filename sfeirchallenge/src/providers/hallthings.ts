@@ -13,3 +13,15 @@ export class Thing {
   by: string;
   values: any;
 }
+export class Property {
+  label: string;
+  type: string;
+}
+export class Model {
+  type: string;
+  name: string;
+  icon: string;
+  color: string;
+  html: string;
+  properties?: Property[];
+}

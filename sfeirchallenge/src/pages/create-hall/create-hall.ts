@@ -3,14 +3,14 @@ import { NavController } from 'ionic-angular';
 import { HallList } from "../hall-list/hall-list";
 import { HallService } from "../../providers/hall.service";
 import { UserData } from "../../providers/user-data";
-import { Hall } from "../../providers/hallthings";
+import { Hall, Model } from "../../providers/hallthings";
 
 @Component({
   selector: 'create-hall',
   templateUrl: 'create-hall.html'
 })
 export class CreateHall {
-  templates: Array<{name: string, icon: string}>;
+  templates: Array<Model>;
   name: string;
   icon: string;
   uid: string;

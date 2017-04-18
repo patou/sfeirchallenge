@@ -19,6 +19,7 @@ import { ThingsService } from '../providers/things.service';
 import { UserData } from '../providers/user-data';
 
 import { OptionIcon } from '../component/ion-option-icon';
+import { HtmlOutlet } from '../component/html-outlet';
 
 export const myFirebaseConfig = {
     apiKey: "AIzaSyBgnWNzntzgNTHNUJlqkm5EEv-3bM1LzyA",
@@ -39,6 +40,7 @@ export const myFirebaseAuthConfig = {
     HallThingsApp,
     Swiper,
     OptionIcon,
+    HtmlOutlet,
     HallList,
     ThingsList,
     CreateHall,

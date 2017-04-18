@@ -41,9 +41,13 @@ export class HallThingsApp {
   menu: MenuController;
 
   things : Array<Hall> = [];
+  html = `
+    <ion-card-header>{{name}}</ion-card-header>
+    <ion-card-content>{{artist}}</ion-card-content>
+  `;
+  values = {name: 'toto', artist: 'titi'};
 
   constructor(public platform: Platform, menu: MenuController,public events: Events, public userData: UserData, private HallService: HallService) {
-
     localStorage.getItem("alreadyVisited" + localStorage.getItem("alreadyVisited"));
     if(localStorage.getItem("alreadyVisited") === "true") {
       this.rootPage = HallList;
