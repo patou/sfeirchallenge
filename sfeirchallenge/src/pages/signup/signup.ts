@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 
 import { NavController, Events } from 'ionic-angular';
 
-import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
 import { UserData } from '../../providers/user-data';
 

@@ -38,16 +38,15 @@ export class HallThingsApp {
     { title: 'Inscription', component: SignupPage, icon: 'person-add' }
   ];
   rootPage: any;
-  menu: MenuController;
 
   things : Array<Hall> = [];
-  html = `
-    <ion-card-header>{{name}}</ion-card-header>
-    <ion-card-content>{{artist}}</ion-card-content>
-  `;
+  html = `<ion-card>
+    <ion-card-header>{{values.name}}</ion-card-header>
+    <ion-card-content>Titi</ion-card-content>
+  </ion-card>`;
   values = {name: 'toto', artist: 'titi'};
 
-  constructor(public platform: Platform, menu: MenuController,public events: Events, public userData: UserData, private HallService: HallService) {
+  constructor(public platform: Platform, private menu: MenuController,public events: Events, public userData: UserData, private HallService: HallService) {
     localStorage.getItem("alreadyVisited" + localStorage.getItem("alreadyVisited"));
     if(localStorage.getItem("alreadyVisited") === "true") {
       this.rootPage = HallList;
@@ -67,7 +66,6 @@ export class HallThingsApp {
 
     this.initializeApp();
     this.listenToLoginEvents();
-    this.menu = menu;
 
     // used for an example of ngFor and navigation
     HallService.getHalls().subscribe(list => this.things = list);

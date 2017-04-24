@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicApp, IonicModule } from 'ionic-angular';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
@@ -51,6 +52,7 @@ export const myFirebaseAuthConfig = {
     CreateEntity
   ],
   imports: [
+    BrowserModule,
     IonicModule.forRoot(HallThingsApp),
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig)
@@ -68,6 +70,10 @@ export const myFirebaseAuthConfig = {
     SignupPage,
     CreateEntity
   ],
-  providers: [HallService, ThingsService, UserData]
+  providers: [
+    HallService,
+    ThingsService,
+    UserData,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

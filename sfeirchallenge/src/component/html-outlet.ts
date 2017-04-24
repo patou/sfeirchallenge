@@ -16,7 +16,9 @@ import { IonicModule } from 'ionic-angular';
 
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
-    const cmpClass = class DynamicComponent {};
+    const cmpClass = class DynamicComponent {
+      values: any;
+    };
     const decoratedCmp = Component(metadata)(cmpClass);
 
     @NgModule({ imports: [CommonModule, IonicModule], declarations: [decoratedCmp] })
@@ -31,6 +33,7 @@ export function createComponentFactory(compiler: Compiler, metadata: Component):
 @Directive({ selector: 'html-outlet' })
 export class HtmlOutlet {
   @Input() html: string;
+  @Input() values: any;
   cmpRef: ComponentRef<any>;
 
   constructor(private vcRef: ViewContainerRef, private compiler: Compiler) { }
@@ -45,7 +48,8 @@ export class HtmlOutlet {
 
     const compMetadata = new Component({
         selector: 'dynamic-html',
-        template: this.html
+        template: this.html,
+        inputs: ['values']
     });
 
     createComponentFactory(this.compiler, compMetadata)
