@@ -13,9 +13,23 @@ export class Thing {
   by: string;
   values: any;
 }
+enum PropertyType {
+  TEXT,
+  NUMBER,
+  DATE,
+  DATETIME,
+  PICTURE,
+  TEXAREA,
+  CHECKBOX,
+  RADIO,
+  SELECT,
+  BARCODE
+}
 export class Property {
   label: string;
-  type: string;
+  name: string;
+  type: PropertyType;
+  values: any[];
 }
 export class Model {
   type: string;

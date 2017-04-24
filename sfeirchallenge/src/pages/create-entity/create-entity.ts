@@ -60,6 +60,7 @@ export class CreateEntity {
       by: this.uid,
       values: this.values
     };
+    console.log(this.values);
     this.ThingsService.create(this.hallId, thing).then(() => {
         this.presentToast("Yes, ton objet a été renseigné avec succès.");
     });

@@ -13,20 +13,11 @@
     <!-- MOCK MOCK toute cette partie est un mock à rendre dynamiue quand on aura les types définissables-->
 
     <div *ngIf="hall.type === 'book'">
-      <ion-item>
-        <ion-label floating>Son titre</ion-label>
-        <ion-input type="text" [(ngModel)]="values.name"></ion-input>
-      </ion-item>
+      <text-type label="Son titre" [(value)]="values['name']"></text-type>
 
-      <ion-item>
-        <ion-label floating>Son auteur</ion-label>
-        <ion-input type="text" [(ngModel)]="values.author"></ion-input>
-      </ion-item>
+      <text-type label="Son auteur" [(value)]="values['author']"></text-type>
 
-      <ion-item>
-        <ion-label floating>ISBN</ion-label>
-        <ion-input type="text" [(ngModel)]="values.isbn"></ion-input>
-      </ion-item>
+      <text-type label="ISBN" [(value)]="values['isbn']"></text-type>
 
       <ion-item>
         <ion-label>Date de d'édition</ion-label>

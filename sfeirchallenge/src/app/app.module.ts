@@ -21,6 +21,7 @@ import { UserData } from '../providers/user-data';
 
 import { OptionIcon } from '../component/ion-option-icon';
 import { HtmlOutlet } from '../component/html-outlet';
+import { TextType } from '../component/type/text';
 
 export const myFirebaseConfig = {
     apiKey: "AIzaSyBgnWNzntzgNTHNUJlqkm5EEv-3bM1LzyA",
@@ -49,7 +50,8 @@ export const myFirebaseAuthConfig = {
     AccountPage,
     LoginPage,
     SignupPage,
-    CreateEntity
+    CreateEntity,
+    TextType
   ],
   imports: [
     BrowserModule,
