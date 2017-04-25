@@ -42,9 +42,9 @@ export class HallThingsApp {
   things : Array<Hall> = [];
   html = `<ion-card>
     <ion-card-header>{{values.name}}</ion-card-header>
-    <ion-card-content>Titi</ion-card-content>
+    <ion-card-content>Titi {{values.count}}</ion-card-content>
   </ion-card>`;
-  values = {name: 'toto', artist: 'titi'};
+  values = {name: 'toto', artist: 'titi', count: 0};
 
   constructor(public platform: Platform, private menu: MenuController,public events: Events, public userData: UserData, private HallService: HallService) {
     localStorage.getItem("alreadyVisited" + localStorage.getItem("alreadyVisited"));
@@ -70,6 +70,21 @@ export class HallThingsApp {
     // used for an example of ngFor and navigation
     HallService.getHalls().subscribe(list => this.things = list);
 
+  }
+
+  incr() {
+    this.values.count++;
+  }
+
+  newValues() {
+    this.values = {name: 'patrice', count: 42, artist: undefined};
+  }
+
+  newTemplate() {
+    this.html = `<ion-item>
+    <ion-label>{{values.name}}</ion-label>
+    <div item-content>{{values.artist}} {{values.count}}</div>
+  </ion-item>`;
   }
 
   initializeApp() {

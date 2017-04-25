@@ -16,9 +16,7 @@ import { IonicModule } from 'ionic-angular';
 
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
-    const cmpClass = class DynamicComponent {
-      values: any;
-    };
+    const cmpClass = class DynamicComponent {};
     const decoratedCmp = Component(metadata)(cmpClass);
 
     @NgModule({ imports: [CommonModule, IonicModule], declarations: [decoratedCmp] })
@@ -51,11 +49,14 @@ export class HtmlOutlet {
         template: this.html,
         inputs: ['values']
     });
+    let val = this.values;
 
     createComponentFactory(this.compiler, compMetadata)
       .then(factory => {
         const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
         this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
+        this.cmpRef.instance.values = val;
+        this.cmpRef.changeDetectorRef.detectChanges();
       });
   }
 
