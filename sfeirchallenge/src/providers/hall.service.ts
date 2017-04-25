@@ -3,34 +3,34 @@ import { Hall, Model } from './hallthings';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 export const HALLS: Model[] = [
-  { name: 'Mes Livres', color: '#2ecc71', icon: 'book', type: 'book', html:`
-    <ion-card-header>{{name}}</ion-card-header>
-    <ion-card-content>{{author}}</ion-card-content>
-  `},
-  { name: 'Mes DVD', color: '#9b59b6', icon: 'disc', type: 'video' , html:`
-      <ion-card-header>{{name}}</ion-card-header>
-      <ion-card-content>{{producer}}</ion-card-content>
-      `},
-  { name: 'Ma liste de course', color: '#3498db', icon: 'cart', type:'cart' , html:`
-    <ion-card-header>{{name}}</ion-card-header>
-    <ion-card-content>{{brand}}</ion-card-content>
-  `},
-  { name: 'Mes jeux', color: '#95a5a6', icon: 'logo-playstation', type:'game' , html:`
-    <ion-card-header>{{name}}</ion-card-header>
-    <ion-card-content>{{editor}}</ion-card-content>
-  `},
-  { name: 'Ma musique', color: '#d35400', icon: 'musical-notes', type: 'music' , html:`
-    <ion-card-header>{{name}}</ion-card-header>
-    <ion-card-content>{{artist}}</ion-card-content>
-  `},
-  { name: 'Mes voyages', color: '#f1c40f', icon: 'jet', type: 'travel' , html:`
-    <ion-card-header>{{name}}</ion-card-header>
-    <ion-card-content>{{where}}</ion-card-content>
-  `},
-  { name: 'Mes vins', color: '#8e44ad', icon: 'wine', type: 'wine' , html:`
-    <ion-card-header>{{name}}</ion-card-header>
-    <ion-card-content>{{variety}}</ion-card-content>
-  `}
+  { name: 'Mes Livres', color: '#2ecc71', icon: 'book', type: 'book', html:`<ion-card>
+    <ion-card-header>{{values.name}}</ion-card-header>
+    <ion-card-content>{{values.author}}</ion-card-content>
+  </ion-card>`},
+  { name: 'Mes DVD', color: '#9b59b6', icon: 'disc', type: 'video' , html:`<ion-card>
+      <ion-card-header>{{values.name}}</ion-card-header>
+      <ion-card-content>{{values.producer}}</ion-card-content>
+      </ion-card>`},
+  { name: 'Ma liste de course', color: '#3498db', icon: 'cart', type:'cart' , html:`<ion-card>
+    <ion-card-header>{{values.name}}</ion-card-header>
+    <ion-card-content>{{values.brand}}</ion-card-content>
+  </ion-card>`},
+  { name: 'Mes jeux', color: '#95a5a6', icon: 'logo-playstation', type:'game' , html:`<ion-card>
+    <ion-card-header>{{values.name}}</ion-card-header>
+    <ion-card-content>{{values.editor}}</ion-card-content>
+  </ion-card>`},
+  { name: 'Ma musique', color: '#d35400', icon: 'musical-notes', type: 'music' , html:`<ion-card>
+    <ion-card-header>{{values.name}}</ion-card-header>
+    <ion-card-content>{{values.artist}}</ion-card-content>
+  </ion-card>`},
+  { name: 'Mes voyages', color: '#f1c40f', icon: 'jet', type: 'travel' , html:`<ion-card>
+    <ion-card-header>{{values.name}}</ion-card-header>
+    <ion-card-content>{{values.where}}</ion-card-content>
+  </ion-card>`},
+  { name: 'Mes vins', color: '#8e44ad', icon: 'wine', type: 'wine' , html:`<ion-card>
+    <ion-card-header>{{values.name}}</ion-card-header>
+    <ion-card-content>{{values.variety}}</ion-card-content>
+  </ion-card>`}
 ];
 
 @Injectable()

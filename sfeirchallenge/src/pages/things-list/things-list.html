@@ -13,7 +13,6 @@
    <button ion-fab (click)="addNew()"><ion-icon name="add"></ion-icon></button>
  </ion-fab>
 
- <ion-card *ngFor="let thing of things">
-   <h1>{{thing.values.name}}</h1>
- </ion-card>
+<html-outlet [html]="model.html" [values]="thing.values" *ngFor="let thing of things"></html-outlet>
+
 </ion-content>

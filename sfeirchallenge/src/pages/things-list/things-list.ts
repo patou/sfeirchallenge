@@ -29,6 +29,7 @@ export class ThingsList {
     ThingsService.getThings(this.id).subscribe(things => {
       this.things = things;
     });
+    
   }
 
   addNew(){
