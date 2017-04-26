@@ -22,6 +22,9 @@ import { UserData } from '../providers/user-data';
 import { OptionIcon } from '../component/ion-option-icon';
 import { HtmlOutlet } from '../component/html-outlet';
 import { TextType } from '../component/type/text';
+import { NumberType } from '../component/type/number';
+import { DateTimeType } from '../component/type/date-time';
+import { TextAreaType } from '../component/type/textarea-type';
 
 export const myFirebaseConfig = {
     apiKey: "AIzaSyBgnWNzntzgNTHNUJlqkm5EEv-3bM1LzyA",
@@ -51,7 +54,10 @@ export const myFirebaseAuthConfig = {
     LoginPage,
     SignupPage,
     CreateEntity,
-    TextType
+    TextType,
+    NumberType,
+    DateTimeType,
+    TextAreaType
   ],
   imports: [
     BrowserModule,
