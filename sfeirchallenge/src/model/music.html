@@ -1,0 +1,14 @@
+<div>
+      <ion-avatar item-left>
+        <img [src]="item.picture">
+      </ion-avatar>
+      <h2>{{item.name}}</h2>
+      <h3>{{item.artist}}</h3>
+      <p>{{item.genre}}</p>
+      <div class="item-note" item-right>
+        {{item.year}}
+      </div>
+      <div class="item-note" item-right>
+        <ion-icon *ngFor="let rate of [1,2,3,4,5]" [name]="rate <= item.note ? 'star' : 'star-outline'"></ion-icon>
+      </div>
+</div>

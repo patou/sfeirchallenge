@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 import { Option } from 'ionic-angular'
 /**
  * @name Option
