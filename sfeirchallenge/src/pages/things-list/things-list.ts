@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { CreateEntity } from '../../pages/create-entity/create-entity';
+import { ViewEntity } from '../../pages/view-entity/view-entity';
 import { HallService } from "../../providers/hall.service";
 import { ThingsService } from "../../providers/things.service";
 import { Hall, Model } from '../../providers/hallthings'
@@ -28,11 +29,16 @@ export class ThingsList {
     });
     ThingsService.getThings(this.id).subscribe(things => {
       this.things = things;
+      console.log(this.things);
     });
-    
+
   }
 
   addNew(){
     this.navCtrl.setRoot(CreateEntity, {id: this.id});
+  }
+
+  open(hallId, thingId) {
+    this.navCtrl.push(ViewEntity, {hallId: hallId, thingId: thingId});
   }
 }

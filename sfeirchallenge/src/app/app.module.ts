@@ -10,6 +10,7 @@ import { HallList } from '../pages/hall-list/hall-list';
 import { ThingsList } from '../pages/things-list/things-list';
 import { SettingsPage } from '../pages/settings/settings';
 import { CreateEntity } from '../pages/create-entity/create-entity';
+import { ViewEntity } from '../pages/view-entity/view-entity';
 import { CreateHall } from '../pages/create-hall/create-hall';
 import { SignupPage } from '../pages/signup/signup';
 import { AccountPage } from '../pages/account/account';
@@ -54,6 +55,7 @@ export const myFirebaseAuthConfig = {
     LoginPage,
     SignupPage,
     CreateEntity,
+    ViewEntity,
     TextType,
     NumberType,
     DateTimeType,
@@ -76,7 +78,8 @@ export const myFirebaseAuthConfig = {
     AccountPage,
     LoginPage,
     SignupPage,
-    CreateEntity
+    CreateEntity,
+    ViewEntity
   ],
   providers: [
     HallService,

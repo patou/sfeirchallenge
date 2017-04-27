@@ -3,12 +3,15 @@ import {
   Directive,
   NgModule,
   Input,
+  Output,
   ViewContainerRef,
   Compiler,
   ComponentFactory,
   ModuleWithComponentFactories,
   ComponentRef,
-  ReflectiveInjector
+  ReflectiveInjector,
+  EventEmitter,
+  HostListener
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
@@ -16,16 +19,16 @@ import { IonicModule } from 'ionic-angular';
 
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
-    const cmpClass = class DynamicComponent {};
-    const decoratedCmp = Component(metadata)(cmpClass);
+  const cmpClass = class DynamicComponent {};
+  const decoratedCmp = Component(metadata)(cmpClass);
 
-    @NgModule({ imports: [CommonModule, IonicModule], declarations: [decoratedCmp] })
-    class DynamicHtmlModule { }
+  @NgModule({ imports: [CommonModule, IonicModule], declarations: [decoratedCmp] })
+  class DynamicHtmlModule { }
 
-    return compiler.compileModuleAndAllComponentsAsync(DynamicHtmlModule)
-       .then((moduleWithComponentFactory: ModuleWithComponentFactories<any>) => {
-        return moduleWithComponentFactory.componentFactories.find(x => x.componentType === decoratedCmp);
-      });
+  return compiler.compileModuleAndAllComponentsAsync(DynamicHtmlModule)
+  .then((moduleWithComponentFactory: ModuleWithComponentFactories<any>) => {
+    return moduleWithComponentFactory.componentFactories.find(x => x.componentType === decoratedCmp);
+  });
 }
 
 @Directive({ selector: 'html-outlet' })
@@ -45,19 +48,19 @@ export class HtmlOutlet {
     }
 
     const compMetadata = new Component({
-        selector: 'dynamic-html',
-        template: this.html,
-        inputs: ['values']
+      selector: 'dynamic-html',
+      template: this.html,
+      inputs: ['values']
     });
     let val = this.values;
 
     createComponentFactory(this.compiler, compMetadata)
-      .then(factory => {
-        const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
-        this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
-        this.cmpRef.instance.values = val;
-        this.cmpRef.changeDetectorRef.detectChanges();
-      });
+    .then(factory => {
+      const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
+      this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
+      this.cmpRef.instance.values = val;
+      this.cmpRef.changeDetectorRef.detectChanges();
+    });
   }
 
   ngOnDestroy() {

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Editeer une thing <div *ngIf="type">{{type.name}}</div></ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <div *ngFor='let property of model.properties'>
+      <div [ngSwitch]="property.type">
+        <div *ngSwitchCase="0">
+          <text-type label="{{property.label}}" [(value)]="thing.values[property.name]"></text-type>
+        </div>
+        <div *ngSwitchCase="1">
+          <number-type label="{{property.label}}" [(value)]="thing.values[property.name]"></number-type>
+        </div>
+        <div *ngSwitchCase="2">
+          <datetime-type label="{{property.label}}" format="YYYY" [(value)]="thing.values[property.name]"></datetime-type>
+        </div>
+        <div *ngSwitchCase="3">
+          <datetime-type label="{{property.label}}" format="DD/MM/YYYY" [(value)]="thing.values[property.name]"></datetime-type>
+        </div>
+        <div *ngSwitchCase="5">
+          <textarea-type label="{{property.label}}" [(value)]="thing.values[property.name]"></textarea-type>
+        </div>
+      </div>
+    </div>
+    <button ion-button full (click)="update()">Mettre à jour</button>
+  </ion-list>
+</ion-content>

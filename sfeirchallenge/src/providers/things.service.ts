@@ -20,4 +20,8 @@ export class ThingsService {
     create(hallId:string, thing:Thing):firebase.database.ThenableReference {
       return this.af.database.list('things/'+hallId).push(thing);
     }
+
+    update(hallId:string, thing:Thing, thingKey: string):firebase.Promise<void> {
+      return this.af.database.object('things/'+hallId+'/'+thingKey).update(thing);
+    }
 }

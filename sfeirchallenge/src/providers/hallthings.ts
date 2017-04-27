@@ -13,7 +13,7 @@ export class Thing {
   by: string;
   values: any;
 }
-//Quand on print un enum en angular avec {{}} ça produit l'index de l'enum TEXT : 0 NUMBER : 1 etc ...
+//Attnetion : Quand on print un enum en angular avec {{}} ça produit l'index de l'enum TEXT : 0 NUMBER : 1 etc ...
 export enum PropertyType {
   TEXT,
   NUMBER,

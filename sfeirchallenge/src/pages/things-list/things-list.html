@@ -8,11 +8,10 @@
 </ion-header>
 
 <ion-content>
-
   <ion-fab right bottom>
-   <button ion-fab (click)="addNew()"><ion-icon name="add"></ion-icon></button>
- </ion-fab>
-
-<html-outlet [html]="model.html" [values]="thing.values" *ngFor="let thing of things"></html-outlet>
-
+    <button ion-fab (click)="addNew()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  <div *ngFor="let thing of things" (click)="open(hall.$key, thing.$key)">
+    <html-outlet [html]="model.html" [values]="thing.values"></html-outlet>
+  </div>
 </ion-content>
