@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { ThingsList } from '../things-list/things-list';
-//import { CreateEntity } from '../create-entity/create-entity';
 
 import { Hall } from '../../providers/hallthings'
 import { HallService } from '../../providers/hall.service'
@@ -24,10 +23,6 @@ export class HallList {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.navCtrl.setRoot(ThingsList, {id: page.$key});
+    this.navCtrl.push(ThingsList, {hallId: page.$key});
   }
-
-  // addNew(){
-  //   this.navCtrl.setRoot(CreateEntity);
-  // }
 }

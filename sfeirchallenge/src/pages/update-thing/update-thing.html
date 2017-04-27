@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -11,22 +11,22 @@
     <div *ngFor='let property of model.properties'>
       <div [ngSwitch]="property.type">
         <div *ngSwitchCase="0">
-          <text-type label="{{property.label}}" [(value)]="values[property.name]"></text-type>
+          <text-type label="{{property.label}}" [(value)]="thing.values[property.name]"></text-type>
         </div>
         <div *ngSwitchCase="1">
-          <number-type label="{{property.label}}" [(value)]="values[property.name]"></number-type>
+          <number-type label="{{property.label}}" [(value)]="thing.values[property.name]"></number-type>
         </div>
         <div *ngSwitchCase="2">
-          <datetime-type label="{{property.label}}" format="YYYY" [(value)]="values[property.name]"></datetime-type>
+          <datetime-type label="{{property.label}}" format="YYYY" [(value)]="thing.values[property.name]"></datetime-type>
         </div>
         <div *ngSwitchCase="3">
-          <datetime-type label="{{property.label}}" format="DD/MM/YYYY" [(value)]="values[property.name]"></datetime-type>
+          <datetime-type label="{{property.label}}" format="DD/MM/YYYY" [(value)]="thing.values[property.name]"></datetime-type>
         </div>
         <div *ngSwitchCase="5">
-          <textarea-type label="{{property.label}}" [(value)]="values[property.name]"></textarea-type>
+          <textarea-type label="{{property.label}}" [(value)]="thing.values[property.name]"></textarea-type>
         </div>
       </div>
     </div>
-    <button ion-button full (click)="save()" [disabled]="!hall.type">Créer</button>
+    <button ion-button full (click)="save()" [disabled]="!hall.type">{{thingId ? "Mettre à jour":"Créer"}}</button>
   </ion-list>
 </ion-content>

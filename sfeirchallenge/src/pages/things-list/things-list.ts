@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 
-import { CreateEntity } from '../../pages/create-entity/create-entity';
-import { ViewEntity } from '../../pages/view-entity/view-entity';
+import { UpdateThing } from '../../pages/update-thing/update-thing';
+import { ViewThing } from '../../pages/view-thing/view-thing';
 import { HallService } from "../../providers/hall.service";
 import { ThingsService } from "../../providers/things.service";
 import { Hall, Model } from '../../providers/hallthings'
@@ -13,21 +13,21 @@ import { Hall, Model } from '../../providers/hallthings'
   templateUrl: 'things-list.html'
 })
 export class ThingsList {
-  id: string;
+  hallId: string;
   hall: Hall;
   things: Array<any>;
   model: Model;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private HallService: HallService, private ThingsService: ThingsService) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.id = navParams.get('id');
+    this.hallId = navParams.get('hallId');
 
-    HallService.getHall(this.id).subscribe(hall => {
+    HallService.getHall(this.hallId).subscribe(hall => {
       this.hall = hall;
       this.model = HallService.getModel(hall.type);
       console.log(hall);
     });
-    ThingsService.getThings(this.id).subscribe(things => {
+    ThingsService.getThings(this.hallId).subscribe(things => {
       this.things = things;
       console.log(this.things);
     });
@@ -35,10 +35,10 @@ export class ThingsList {
   }
 
   addNew(){
-    this.navCtrl.setRoot(CreateEntity, {id: this.id});
+    this.navCtrl.push(UpdateThing, {hallId: this.hallId});
   }
 
-  open(hallId, thingId) {
-    this.navCtrl.push(ViewEntity, {hallId: hallId, thingId: thingId});
+  open(thingId) {
+    this.navCtrl.push(ViewThing, {hallId: this.hallId, thingId: thingId});
   }
 }
