@@ -6,61 +6,27 @@
     <ion-title>Créer une thing <div *ngIf="type">{{type.name}}</div></ion-title>
   </ion-navbar>
 </ion-header>
-  TODO si le type n'est pas défini mettre une combo qui permet de le choisir ?
 <ion-content padding>
   <ion-list>
-
-    <!-- MOCK MOCK toute cette partie est un mock à rendre dynamiue quand on aura les types définissables-->
-
-    <div *ngIf="hall.type === 'book'">
-      <text-type label="Son titre" [(value)]="values['name']"></text-type>
-      <text-type label="Son auteur" [(value)]="values['author']"></text-type>
-      <text-type label="ISBN" [(value)]="values['isbn']"></text-type>
-      <datetime-type label="Date de l'édition" format="DD/MM/YYYY" [(value)]="values['date']"></datetime-type>
-      <textarea-type label="Résumé" [(value)]="values['desc']"></textarea-type>
+    <div *ngFor='let property of model.properties'>
+      <div [ngSwitch]="property.type">
+        <div *ngSwitchCase="0">
+          <text-type label="{{property.label}}" [(value)]="values[property.name]"></text-type>
+        </div>
+        <div *ngSwitchCase="1">
+          <number-type label="{{property.label}}" [(value)]="values[property.name]"></number-type>
+        </div>
+        <div *ngSwitchCase="2">
+          <datetime-type label="{{property.label}}" format="YYYY" [(value)]="values[property.name]"></datetime-type>
+        </div>
+        <div *ngSwitchCase="3">
+          <datetime-type label="{{property.label}}" format="DD/MM/YYYY" [(value)]="values[property.name]"></datetime-type>
+        </div>
+        <div *ngSwitchCase="5">
+          <textarea-type label="{{property.label}}" [(value)]="values[property.name]"></textarea-type>
+        </div>
+      </div>
     </div>
-    <div *ngIf="hall.type === 'video'">
-      <text-type label="Son titre" [(value)]="values['name']"></text-type>
-      <text-type label="Son titre" [(value)]="values['producer']"></text-type>
-      <text-type label="Son titre" [(value)]="values['actors']"></text-type>
-      <datetime-type label="Date de sortie" format="DD/MM/YYYY" [(value)]="values['date']"></datetime-type>
-      <textarea-type label="Résumé" [(value)]="values['desc']"></textarea-type>
-    </div>
-    <div *ngIf="hall.type === 'cart'">
-      <text-type label="Nom de l'article" [(value)]="values['name']"></text-type>
-      <text-type label="Sa marque" [(value)]="values['brand']"></text-type>
-      <text-type label="Son unité" [(value)]="values['unit']"></text-type>
-      <number-type label="Sa quantité" [(value)]="values['quantity']"></number-type>
-      <number-type label="Sa quantité" [(value)]="values['price']"></number-type>
-    </div>
-
-    <div *ngIf="hall.type === 'game'">
-      <text-type label="Nom du jeu" [(value)]="values['name']"></text-type>
-      <text-type label="Nom de l'editeur" [(value)]="values['editor']"></text-type>
-      <text-type label="Genre du jeu" [(value)]="values['genre']"></text-type>
-      <text-type label="Plateforme" [(value)]="values['plateform']"></text-type>
-      <datetime-type label="Date de sortie" format="DD/MM/YYYY" [(value)]="values['date']"></datetime-type>
-      <textarea-type label="Résumé" [(value)]="values['desc']"></textarea-type>
-    </div>
-
-    <div *ngIf="hall.type === 'music'">
-      <text-type label="Nom de l'album" [(value)]="values['name']"></text-type>
-      <text-type label="Nom de l'artite" [(value)]="values['artist']"></text-type>
-      <text-type label="Genre du jeu" [(value)]="values['genre']"></text-type>
-      <datetime-type label="Date de sortie" format="DD/MM/YYYY" [(value)]="values['date']"></datetime-type>
-    </div>
-
-    <div *ngIf="hall.type === 'travel'">
-      <text-type label="Lieux" [(value)]="values['where']"></text-type>
-      <datetime-type label="Date du voyage" format="DD/MM/YYYY" [(value)]="values['date']"></datetime-type>
-    </div>
-
-    <div *ngIf="hall.type === 'wine'">
-      <text-type label="Appelation" [(value)]="values['name']"></text-type>
-      <datetime-type label="Année" format="YYYY" [(value)]="values['date']"></datetime-type>
-      <text-type label="Varieté" [(value)]="values['variety']"></text-type>
-    </div>
-
     <button ion-button full (click)="save()" [disabled]="!hall.type">Créer</button>
   </ion-list>
 </ion-content>

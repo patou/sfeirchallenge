@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { ThingsList } from '../things-list/things-list';
-import { CreateEntity } from '../create-entity/create-entity';
+//import { CreateEntity } from '../create-entity/create-entity';
 
 import { Hall } from '../../providers/hallthings'
 import { HallService } from '../../providers/hall.service'
@@ -27,7 +27,7 @@ export class HallList {
     this.navCtrl.setRoot(ThingsList, {id: page.$key});
   }
 
-  addNew(){
-    this.navCtrl.setRoot(CreateEntity);
-  }
+  // addNew(){
+  //   this.navCtrl.setRoot(CreateEntity);
+  // }
 }

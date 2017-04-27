@@ -13,7 +13,8 @@ export class Thing {
   by: string;
   values: any;
 }
-enum PropertyType {
+//Quand on print un enum en angular avec {{}} ça produit l'index de l'enum TEXT : 0 NUMBER : 1 etc ...
+export enum PropertyType {
   TEXT,
   NUMBER,
   DATE,
@@ -29,7 +30,7 @@ export class Property {
   label: string;
   name: string;
   type: PropertyType;
-  values: any[];
+  values?: any[];
 }
 export class Model {
   type: string;

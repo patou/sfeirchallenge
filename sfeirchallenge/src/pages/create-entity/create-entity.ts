@@ -5,7 +5,7 @@ import { HallList } from '../hall-list/hall-list';
 import { HallService } from "../../providers/hall.service";
 import { ThingsService } from "../../providers/things.service";
 import { UserData } from "../../providers/user-data";
-import { Hall, Thing } from "../../providers/hallthings";
+import { Hall, Thing, Model} from "../../providers/hallthings";
 
 @Component({
   selector: 'create-entity',
@@ -16,13 +16,16 @@ export class CreateEntity {
   uid: string;
   hallId: string;
   values = {};
+  model: Model;
 
   constructor(public nav: NavController, public navParams: NavParams, private toastCtrl: ToastController, private HallService: HallService, private ThingsService: ThingsService, private UserData: UserData) {
     this.hallId = navParams.get('id');
     HallService.getHall(this.hallId).subscribe(hall => {
       this.hall = hall;
       console.log(hall);
+      this.model = HallService.getModel(hall.type);
     });
+
     UserData.getUid().then(uid => this.uid = uid);
 
   }
@@ -60,7 +63,7 @@ export class CreateEntity {
       by: this.uid,
       values: this.values
     };
-    console.log(this.values);
+    console.log("Sauvegarde de l'élement : " + this.values);
     this.ThingsService.create(this.hallId, thing).then(() => {
         this.presentToast("Yes, ton objet a été renseigné avec succès.");
     });
