@@ -3,15 +3,12 @@ import {
   Directive,
   NgModule,
   Input,
-  Output,
   ViewContainerRef,
   Compiler,
   ComponentFactory,
   ModuleWithComponentFactories,
   ComponentRef,
-  ReflectiveInjector,
-  EventEmitter,
-  HostListener
+  ReflectiveInjector
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';

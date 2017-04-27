@@ -9,8 +9,8 @@ import { Swiper } from '../pages/swiper/swiper';
 import { HallList } from '../pages/hall-list/hall-list';
 import { ThingsList } from '../pages/things-list/things-list';
 import { SettingsPage } from '../pages/settings/settings';
-import { CreateEntity } from '../pages/create-entity/create-entity';
-import { ViewEntity } from '../pages/view-entity/view-entity';
+import { UpdateThing } from '../pages/update-thing/update-thing';
+import { ViewThing } from '../pages/view-thing/view-thing';
 import { CreateHall } from '../pages/create-hall/create-hall';
 import { SignupPage } from '../pages/signup/signup';
 import { AccountPage } from '../pages/account/account';
@@ -54,8 +54,8 @@ export const myFirebaseAuthConfig = {
     AccountPage,
     LoginPage,
     SignupPage,
-    CreateEntity,
-    ViewEntity,
+    UpdateThing,
+    ViewThing,
     TextType,
     NumberType,
     DateTimeType,
@@ -78,8 +78,8 @@ export const myFirebaseAuthConfig = {
     AccountPage,
     LoginPage,
     SignupPage,
-    CreateEntity,
-    ViewEntity
+    UpdateThing,
+    ViewThing
   ],
   providers: [
     HallService,

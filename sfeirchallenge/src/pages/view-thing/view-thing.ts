@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
-import { Camera } from 'ionic-native';
 import { HallList } from '../hall-list/hall-list';
 import { HallService } from "../../providers/hall.service";
 import { ThingsService } from "../../providers/things.service";
@@ -8,23 +7,31 @@ import { UserData } from "../../providers/user-data";
 import { Hall, Thing, Model} from "../../providers/hallthings";
 
 @Component({
-  selector: 'create-entity',
-  templateUrl: 'create-entity.html'
+  selector: 'view-thing',
+  templateUrl: 'view-thing.html'
 })
-export class CreateEntity {
-  hall: Hall;
+export class ViewThing {
+  thing: Thing;
   uid: string;
+  thingId: string;
   hallId: string;
+  hall: Hall;
   values = {};
   model: Model;
 
   constructor(public nav: NavController, public navParams: NavParams, private toastCtrl: ToastController, private HallService: HallService, private ThingsService: ThingsService, private UserData: UserData) {
-    this.hallId = navParams.get('id');
+    this.thingId = navParams.get('thingId');
+    this.hallId = navParams.get('hallId');
+
     HallService.getHall(this.hallId).subscribe(hall => {
       this.hall = hall;
-      console.log(hall);
       this.model = HallService.getModel(hall.type);
+      console.log(hall);
     });
+    ThingsService.getThing(this.hallId, this.thingId).subscribe(thing => {
+      this.thing = thing;
+    });
+
 
     UserData.getUid().then(uid => this.uid = uid);
 
@@ -44,28 +51,9 @@ export class CreateEntity {
     toast.present();
   }
 
-  takePicture(name){
-    Camera.getPicture({
-        destinationType: Camera.DestinationType.DATA_URL,
-        targetWidth: 1000,
-        targetHeight: 1000
-    }).then((imageData) => {
-      // imageData is a base64 encoded string
-        //this.image = "data:image/jpeg;base64," + imageData;
-    }, (err) => {
-        console.log(err);
-    });
-  }
-
-  save() {
-    let thing : Thing = {
-      created: new Date(),
-      by: this.uid,
-      values: this.values
-    };
-    console.log("Sauvegarde de l'élement : " + this.values);
-    this.ThingsService.create(this.hallId, thing).then(() => {
-        this.presentToast("Yes, ton objet a été renseigné avec succès.");
+  update() {
+    this.ThingsService.update(this.hallId, this.thing, this.thingId).then(() => {
+        this.presentToast("Yes, ton objet a été mise à jour avec succès.");
     });
   }
 }
