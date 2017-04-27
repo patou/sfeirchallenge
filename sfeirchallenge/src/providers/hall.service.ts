@@ -160,12 +160,12 @@ properties : [{
   type: PropertyType.TEXT,
 },
 {
-  label: "Nom de l'artist",
+  label: "Nom de l'artiste",
   name: "artist",
   type: PropertyType.TEXT,
 },
 {
-  label: "Genre de musiqeu",
+  label: "Genre de musique",
   name: "genre",
   type: PropertyType.TEXT,
 },
