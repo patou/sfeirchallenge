@@ -4,6 +4,7 @@ import { HallList } from '../hall-list/hall-list';
 import { HallService } from "../../providers/hall.service";
 import { ThingsService } from "../../providers/things.service";
 import { UserData } from "../../providers/user-data";
+import { UpdateThing } from '../../pages/update-thing/update-thing';
 import { Hall, Thing, Model} from "../../providers/hallthings";
 
 @Component({
@@ -12,7 +13,6 @@ import { Hall, Thing, Model} from "../../providers/hallthings";
 })
 export class ViewThing {
   thing: Thing;
-  uid: string;
   thingId: string;
   hallId: string;
   hall: Hall;
@@ -31,29 +31,9 @@ export class ViewThing {
     ThingsService.getThing(this.hallId, this.thingId).subscribe(thing => {
       this.thing = thing;
     });
-
-
-    UserData.getUid().then(uid => this.uid = uid);
-
-  }
-
-  presentToast(text) {
-    let toast = this.toastCtrl.create({
-      message: text,
-      duration: 1000,
-      position: 'bottom'
-    });
-
-    toast.onDidDismiss(() => {
-      this.nav.setRoot(HallList);
-    });
-
-    toast.present();
   }
 
   update() {
-    this.ThingsService.update(this.hallId, this.thing, this.thingId).then(() => {
-        this.presentToast("Yes, ton objet a été mise à jour avec succès.");
-    });
+    this.nav.push(UpdateThing, {hallId: this.hallId, thingId: this.thingId});
   }
 }
