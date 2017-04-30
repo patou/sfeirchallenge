@@ -26,7 +26,6 @@ export class UpdateThing {
     HallService.getHall(this.hallId).subscribe(hall => {
       this.hall = hall;
       console.log(hall);
-      this.model = HallService.getModel(hall.type);
     });
     if (this.thingId) {
       ThingsService.getThing(this.hallId, this.thingId).subscribe(thing => {
@@ -76,6 +75,6 @@ export class UpdateThing {
   }
 
   addNewProperties() {
-    
+
   }
 }

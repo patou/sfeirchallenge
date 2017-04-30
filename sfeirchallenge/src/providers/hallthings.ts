@@ -18,7 +18,7 @@ export class Thing {
 export class Property {
   label: string;
   name: string;
-  type: 'TEXT' | 'NUMBER' | 'DATE' | 'DATETIME' | 'YEAR' | 'PICTURE' | 'TEXAREA' | 'CHECKBOX' | 'RADIO' | 'SELECT' | 'BARCODE';
+  type: 'TEXT' | 'NUMBER' | 'DATE' | 'DATETIME' | 'YEAR' | 'PICTURE' | 'TEXTAREA' | 'CHECKBOX' | 'RADIO' | 'SELECT' | 'BARCODE';
   displayInList: boolean;
   values?: any[];
 }

@@ -4,7 +4,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   selector: 'textarea-type',
   template: `
   <ion-item>
-    <ion-label floating>{{label}}</ion-label>
+    <ion-label fixed>{{label}}</ion-label>
     <ion-textarea [(ngModel)]="value" (change)="valueChange.emit(this.value)"></ion-textarea>
   </ion-item>
   `

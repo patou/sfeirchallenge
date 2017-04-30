@@ -13,7 +13,7 @@
 </ion-header>
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor='let property of model.properties'>
+    <ion-item *ngFor='let property of hall.properties'>
       <b>{{property.label}} :</b>
       <ng-container [ngSwitch]="property.type">
         <span *ngSwitchCase="'TEXT'">

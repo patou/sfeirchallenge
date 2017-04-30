@@ -11,25 +11,25 @@
     <button ion-fab (click)="addNewProperties()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
   <ion-list>
-    <div *ngFor='let property of model.properties'>
+    <ng-container *ngFor='let property of hall.properties'>
       <div [ngSwitch]="property.type">
-        <div *ngSwitchCase="0">
-          <text-type label="{{property.label}}" [(value)]="thing.values[property.name]"></text-type>
-        </div>
-        <div *ngSwitchCase="1">
-          <number-type label="{{property.label}}" [(value)]="thing.values[property.name]"></number-type>
-        </div>
-        <div *ngSwitchCase="2">
-          <datetime-type label="{{property.label}}" format="YYYY" [(value)]="thing.values[property.name]"></datetime-type>
-        </div>
-        <div *ngSwitchCase="3">
-          <datetime-type label="{{property.label}}" format="DD/MM/YYYY" [(value)]="thing.values[property.name]"></datetime-type>
-        </div>
-        <div *ngSwitchCase="5">
-          <textarea-type label="{{property.label}}" [(value)]="thing.values[property.name]"></textarea-type>
-        </div>
+        <ng-container *ngSwitchCase="'TEXT'">
+          <text-type [label]="property.label" [(value)]="thing.values[property.name]"></text-type>
+        </ng-container>
+        <ng-container *ngSwitchCase="'NUMBER'">
+          <number-type [label]="property.label" [(value)]="thing.values[property.name]"></number-type>
+        </ng-container>
+        <ng-container *ngSwitchCase="'YEAR'">
+          <datetime-type [label]="property.label" format="YYYY" [(value)]="thing.values[property.name]"></datetime-type>
+        </ng-container>
+        <ng-container *ngSwitchCase="'DATE'">
+          <datetime-type [label]="property.label" format="DD/MM/YYYY" [(value)]="thing.values[property.name]"></datetime-type>
+        </ng-container>
+        <ng-container *ngSwitchCase="'TEXTAREA'">
+          <textarea-type [label]="property.label" [(value)]="thing.values[property.name]"></textarea-type>
+        </ng-container>
       </div>
-    </div>
+    </ng-container>
     <button ion-button full (click)="save()" [disabled]="!hall.type">{{thingId ? "Mettre à jour":"Créer"}}</button>
   </ion-list>
 </ion-content>

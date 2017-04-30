@@ -38,7 +38,7 @@ export const HALLS: Model[] = [
   {
     label: "Résumé",
     name: "desc",
-    type: 'TEXAREA',
+    type: 'TEXTAREA',
     displayInList: true
   },
 ]
@@ -78,7 +78,7 @@ properties : [{
 {
   label: "Résumé",
   name: "desc",
-  type: 'TEXAREA',
+  type: 'TEXTAREA',
     displayInList: true
 },
 ]
@@ -163,7 +163,7 @@ properties : [{
 {
   label: "Résumé",
   name: "desc",
-  type: 'TEXAREA',
+  type: 'TEXTAREA',
     displayInList: true
 },
 ]},
