@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Events, Nav, Platform, MenuController } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Hall } from '../providers/hallthings';
 import { HallService } from '../providers/hall.service';
@@ -12,7 +11,6 @@ import { SettingsPage } from '../pages/settings/settings';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
-
 import { UserData } from '../providers/user-data';
 
 export interface PageInterface {
@@ -91,8 +89,8 @@ export class HallThingsApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      Splashscreen.hide();
+      //StatusBar.styleDefault();
+      //Splashscreen.hide();
     });
   }
 

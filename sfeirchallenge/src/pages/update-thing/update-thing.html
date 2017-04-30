@@ -7,6 +7,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+  <ion-fab right bottom>
+    <button ion-fab (click)="addNewProperties()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
   <ion-list>
     <div *ngFor='let property of model.properties'>
       <div [ngSwitch]="property.type">

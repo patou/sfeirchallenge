@@ -6,7 +6,7 @@ import { UpdateThing } from '../../pages/update-thing/update-thing';
 import { ViewThing } from '../../pages/view-thing/view-thing';
 import { HallService } from "../../providers/hall.service";
 import { ThingsService } from "../../providers/things.service";
-import { Hall, Model } from '../../providers/hallthings'
+import { Hall } from '../../providers/hallthings'
 
 @Component({
   selector: 'things-list',
@@ -16,7 +16,6 @@ export class ThingsList {
   hallId: string;
   hall: Hall;
   things: Array<any>;
-  model: Model;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private HallService: HallService, private ThingsService: ThingsService) {
     // If we navigated to this page, we will have an item available as a nav param
@@ -24,7 +23,13 @@ export class ThingsList {
 
     HallService.getHall(this.hallId).subscribe(hall => {
       this.hall = hall;
-      this.model = HallService.getModel(hall.type);
+      if (!hall.properties) {
+          let model = HallService.getModel(hall.type);
+          this.hall.html = model.html;
+          this.hall.properties = model.properties;
+          HallService.update(this.hallId, this.hall);
+      }
+
       console.log(hall);
     });
     ThingsService.getThings(this.hallId).subscribe(things => {

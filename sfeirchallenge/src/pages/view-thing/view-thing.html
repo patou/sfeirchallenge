@@ -16,19 +16,19 @@
     <ion-item *ngFor='let property of model.properties'>
       <b>{{property.label}} :</b>
       <ng-container [ngSwitch]="property.type">
-        <span *ngSwitchCase="0">
+        <span *ngSwitchCase="'TEXT'">
           {{thing.values[property.name]}}
         </span>
-        <span *ngSwitchCase="1">
+        <span *ngSwitchCase="'NUMBER'">
           {{thing.values[property.name]|number}}
         </span>
-        <span *ngSwitchCase="2">
+        <span *ngSwitchCase="'YEAR'">
           {{thing.values[property.name]|date:"yyyy"}}
         </span>
-        <span *ngSwitchCase="3">
+        <span *ngSwitchCase="'DATE'">
           {{thing.values[property.name]|date:"dd/MM/yyyy"}}
         </span>
-        <p *ngSwitchCase="5">
+        <p *ngSwitchCase="'TEXTAREA'">
           {{thing.values[property.name]}}
         </p>
       </ng-container>

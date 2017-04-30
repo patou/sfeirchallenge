@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Hall, Model, PropertyType } from './hallthings';
+import { Hall, Model } from './hallthings';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 export const HALLS: Model[] = [
@@ -14,27 +14,32 @@ export const HALLS: Model[] = [
   properties : [{
     label: "Titre",
     name: "name",
-    type: PropertyType.TEXT,
+    type: 'TEXT',
+    displayInList: true
   },
   {
     label: "Auteur",
     name: "author",
-    type: PropertyType.TEXT,
+    type: 'TEXT',
+    displayInList: true
   },
   {
     label: "ISBN",
     name: "isbn",
-    type: PropertyType.TEXT,
+    type: 'TEXT',
+    displayInList: true
   },
   {
     label: "Date",
     name: "date",
-    type: PropertyType.DATE,
+    type: 'DATE',
+    displayInList: true
   },
   {
     label: "Résumé",
     name: "desc",
-    type: PropertyType.TEXAREA,
+    type: 'TEXAREA',
+    displayInList: true
   },
 ]
 },
@@ -49,27 +54,32 @@ html:`<ion-card>
 properties : [{
   label: "Titre",
   name: "name",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Producteur",
   name: "productor",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Acteurs",
   name: "actors",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Date de sortie",
   name: "date",
-  type: PropertyType.DATE,
+  type: 'DATE',
+    displayInList: true
 },
 {
   label: "Résumé",
   name: "desc",
-  type: PropertyType.TEXAREA,
+  type: 'TEXAREA',
+    displayInList: true
 },
 ]
 },
@@ -84,27 +94,32 @@ html:`<ion-card>
 properties : [{
   label: "Nom",
   name: "name",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Marque",
   name: "brand",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Prix",
   name: "price",
-  type: PropertyType.NUMBER,
+  type: 'NUMBER',
+    displayInList: true
 },
 {
   label: "Quantité",
   name: "quantity",
-  type: PropertyType.NUMBER,
+  type: 'NUMBER',
+    displayInList: true
 },
 {
   label: "Unité",
   name: "unit",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 ]},
 { name: 'Mes jeux',
@@ -118,32 +133,38 @@ html:`<ion-card>
 properties : [{
   label: "Nom",
   name: "name",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Studio",
   name: "editor",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Genre",
   name: "genre",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Plateforme",
   name: "plateform",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Date de sortie",
   name: "date",
-  type: PropertyType.DATE,
+  type: 'DATE',
+    displayInList: true
 },
 {
   label: "Résumé",
   name: "desc",
-  type: PropertyType.TEXAREA,
+  type: 'TEXAREA',
+    displayInList: true
 },
 ]},
 { name: 'Ma musique',
@@ -157,22 +178,26 @@ html:`<ion-card>
 properties : [{
   label: "Nom de l'album",
   name: "name",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Nom de l'artiste",
   name: "artist",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Genre de musique",
   name: "genre",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Date de sortie",
   name: "date",
-  type: PropertyType.DATETIME,
+  type: 'DATETIME',
+    displayInList: true
 }
 ]
 },
@@ -187,12 +212,14 @@ html:`<ion-card>
 properties : [{
   label: "Lieu",
   name: "where",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Date",
   name: "date",
-  type: PropertyType.DATETIME,
+  type: 'DATETIME',
+    displayInList: true
 }]},
 { name: 'Mes vins',
 color: '#8e44ad',
@@ -205,17 +232,20 @@ html:`<ion-card>
 properties : [{
   label: "Appellation",
   name: "name",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 },
 {
   label: "Année",
   name: "date",
-  type: PropertyType.DATE,
+  type: 'YEAR',
+    displayInList: true
 },
 {
   label: "Varieté",
   name: "variety",
-  type: PropertyType.TEXT,
+  type: 'TEXT',
+    displayInList: true
 }
 ]}
 ];
@@ -245,5 +275,9 @@ export class HallService {
 
   create(hall:Hall):firebase.database.ThenableReference {
     return this.halls.push(hall);
+  }
+
+  update(hallId:string, hall:Hall):firebase.Promise<void> {
+    return this.af.database.object('halls/'+hallId).update(hall);
   }
 }

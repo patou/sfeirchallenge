@@ -22,7 +22,7 @@ export class CreateHall {
 
    createHall(template:Hall) {
      if (this.name) {
-       let hall:Hall = {name : this.name, icon: this.icon || template.icon, type: template.type, color : template.color, count: 0, owner: [this.uid], shared:[this.uid] };
+       let hall:Hall = {name : this.name, icon: this.icon || template.icon, type: template.type, color : template.color, html: template.html, properties: template.properties, count: 0, owner: [this.uid], shared:[this.uid] };
        this.HallService.create(hall).then(() => this.navCtrl.setRoot(HallList));
      }
    }
