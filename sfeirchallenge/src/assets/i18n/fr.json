@@ -2,7 +2,7 @@
     "name" : "HallThings",
     "PropertyType": {
         "TEXT": "Texte simple",
-        "NUMBER": "Numbre",
+        "NUMBER": "Nombre",
         "DATE": "Date",
         "DATETIME": "Date et heure",
         "YEAR": "Année",

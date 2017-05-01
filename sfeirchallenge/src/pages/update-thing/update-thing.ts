@@ -20,7 +20,7 @@ export class UpdateThing {
   thing: Thing;
   model: Model;
 
-  constructor(public nav: NavController, public navParams: NavParams, private toastCtrl: ToastController, private modalCtrl: ModalController, private HallService: HallService, private ThingsService: ThingsService, private UserData: UserData) {
+  constructor(public nav: NavController, public navParams: NavParams, private toastCtrl: ToastController, private HallService: HallService, private ThingsService: ThingsService, private UserData: UserData) {
 
     this.thingId = navParams.get('thingId');
     this.hallId = navParams.get('hallId');
@@ -78,7 +78,6 @@ export class UpdateThing {
   }
 
   editProperties() {
-    let modal = this.modalCtrl.create(UpdateHall, {hallId: this.hallId});
-    modal.present();
+    this.nav.push(UpdateHall, {hallId: this.hallId});
   }
 }

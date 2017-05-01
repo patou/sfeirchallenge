@@ -1,5 +1,5 @@
 import { Component, ViewChild , ElementRef } from '@angular/core';
-import { ViewController, NavParams, ToastController, reorderArray, AlertController, List, PopoverController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, reorderArray, AlertController, List, PopoverController } from 'ionic-angular';
 import { HallService } from "../../providers/hall.service";
 import { ThingsService } from "../../providers/things.service";
 import { UserData } from "../../providers/user-data";
@@ -15,7 +15,7 @@ export class UpdateHall {
   hallId: string;
   @ViewChild(List) list: List;
   @ViewChild('add') addButton: ElementRef;
-  constructor(public view: ViewController, public navParams: NavParams, private alertCtrl: AlertController, private popoverCtrl: PopoverController, private toastCtrl: ToastController, private HallService: HallService, private UserData: UserData) {
+  constructor(public nav: NavController, public navParams: NavParams, private alertCtrl: AlertController, private popoverCtrl: PopoverController, private toastCtrl: ToastController, private HallService: HallService, private UserData: UserData) {
 
     this.hallId = navParams.get('hallId');
 
@@ -93,7 +93,7 @@ export class UpdateHall {
 
   save() {
     this.HallService.update(this.hallId, this.hall).then(() => {
-      this.view.dismiss();
+      this.nav.pop();
     });
   }
 
