@@ -1,3 +1,4 @@
+import { TranslateService } from "ng2-translate";
 import { Component, ViewChild } from '@angular/core';
 import { Events, Nav, Platform, MenuController } from 'ionic-angular';
 
@@ -44,7 +45,7 @@ export class HallThingsApp {
   </ion-card>`;
   values = {name: 'toto', artist: 'titi', count: 0};
 
-  constructor(public platform: Platform, private menu: MenuController,public events: Events, public userData: UserData, private HallService: HallService) {
+  constructor(public platform: Platform, private menu: MenuController, translate: TranslateService, public events: Events, public userData: UserData, private HallService: HallService) {
     localStorage.getItem("alreadyVisited" + localStorage.getItem("alreadyVisited"));
     if(localStorage.getItem("alreadyVisited") === "true") {
       this.rootPage = HallList;
@@ -61,6 +62,9 @@ export class HallThingsApp {
       this.enableMenu(false);
       this.rootPage = Swiper;
     }
+
+    translate.setDefaultLang('fr');
+    translate.use('fr');
 
     this.initializeApp();
     this.listenToLoginEvents();

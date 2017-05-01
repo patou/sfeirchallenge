@@ -15,10 +15,11 @@ export class Thing {
   by: string;
   values: any;
 }
+export const propertyTypes : string[] = ['TEXT' , 'NUMBER' , 'DATE' , 'DATETIME' , 'YEAR' , 'PICTURE' , 'TEXTAREA' , 'CHECKBOX' , 'ICON' , 'SELECT' , 'BARCODE'];
 export class Property {
   label: string;
   name: string;
-  type: 'TEXT' | 'NUMBER' | 'DATE' | 'DATETIME' | 'YEAR' | 'PICTURE' | 'TEXTAREA' | 'CHECKBOX' | 'RADIO' | 'SELECT' | 'BARCODE';
+  type: string;
   displayInList: boolean;
   values?: any[];
 }

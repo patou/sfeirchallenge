@@ -30,7 +30,7 @@
       </ion-buttons>
       <ion-title>Propriètés</ion-title>
       <ion-buttons left>
-        <button ion-button (click)="addNewProperties()" #add>
+        <button ion-button (click)="addNewProperties($event)" #add>
           <ion-icon name="add"></ion-icon>
         </button>
       </ion-buttons>
@@ -40,7 +40,7 @@
         <ion-item>
           <ion-icon [name]="property.displayInList?'checkbox':'square-outline'" item-left (click)="toggleDisplayInList(property)"></ion-icon>
           <h1>{{property.label}}</h1>
-          <p>{{property.type}}</p>
+          <p>{{'PropertyType.'+property.type | translate}}</p>
           <ion-note item-right>
            {{property.name}}
            </ion-note>

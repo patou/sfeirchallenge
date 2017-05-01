@@ -1,0 +1,16 @@
+{
+    "name" : "HallThings",
+    "PropertyType": {
+        "TEXT": "Texte simple",
+        "NUMBER": "Numbre",
+        "DATE": "Date",
+        "DATETIME": "Date et heure",
+        "YEAR": "Année",
+        "TEXTAREA": "Texte muliligne",
+        "PICTURE": "Photo",
+        "CHECKBOX": "Case à cocher",
+        "BARCODE": "Codebar",
+        "ICON": "Icone",
+        "SELECT": "Liste déroulante"
+    }
+}

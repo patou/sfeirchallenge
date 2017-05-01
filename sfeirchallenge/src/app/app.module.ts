@@ -1,8 +1,12 @@
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { Http } from '@angular/http';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 
 import { HallThingsApp } from './app.component';
 import { Swiper } from '../pages/swiper/swiper';
@@ -15,7 +19,7 @@ import { CreateHall } from '../pages/create-hall/create-hall';
 import { SignupPage } from '../pages/signup/signup';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
-import { UpdateHall } from '../pages/update-hall/update-hall';
+import { UpdateHall, UpdateHallPopoverPage } from '../pages/update-hall/update-hall';
 
 import { HallService } from '../providers/hall.service';
 import { ThingsService } from '../providers/things.service';
@@ -57,6 +61,7 @@ export const myFirebaseAuthConfig = {
     SignupPage,
     UpdateThing,
     UpdateHall,
+    UpdateHallPopoverPage,
     ViewThing,
     TextType,
     NumberType,
@@ -65,6 +70,11 @@ export const myFirebaseAuthConfig = {
   ],
   imports: [
     BrowserModule,
+    TranslateModule.forRoot({
+            provide: TranslateLoader,
+            useFactory: (createTranslateLoader),
+            deps: [Http]
+        }),
     IonicModule.forRoot(HallThingsApp),
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig)
@@ -82,6 +92,7 @@ export const myFirebaseAuthConfig = {
     SignupPage,
     UpdateThing,
     UpdateHall,
+    UpdateHallPopoverPage,
     ViewThing
   ],
   providers: [
@@ -91,3 +102,7 @@ export const myFirebaseAuthConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
+
+export function createTranslateLoader(http: Http) {
+    return new TranslateStaticLoader(http, './assets/i18n', '.json');
+}
