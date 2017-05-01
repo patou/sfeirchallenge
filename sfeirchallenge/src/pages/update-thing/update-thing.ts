@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
 import { HallList } from '../hall-list/hall-list';
+import { UpdateHall } from '../update-hall/update-hall';
 import { HallService } from "../../providers/hall.service";
 import { ThingsService } from "../../providers/things.service";
 import { UserData } from "../../providers/user-data";
@@ -11,6 +12,7 @@ import { Hall, Thing, Model} from "../../providers/hallthings";
   templateUrl: 'update-thing.html'
 })
 export class UpdateThing {
+  templates: Model[];
   hall: Hall;
   uid: string;
   hallId: string;
@@ -18,11 +20,11 @@ export class UpdateThing {
   thing: Thing;
   model: Model;
 
-  constructor(public nav: NavController, public navParams: NavParams, private toastCtrl: ToastController, private HallService: HallService, private ThingsService: ThingsService, private UserData: UserData) {
+  constructor(public nav: NavController, public navParams: NavParams, private toastCtrl: ToastController, private modalCtrl: ModalController, private HallService: HallService, private ThingsService: ThingsService, private UserData: UserData) {
 
     this.thingId = navParams.get('thingId');
     this.hallId = navParams.get('hallId');
-
+    this.templates = HallService.getHallsAvailable();
     HallService.getHall(this.hallId).subscribe(hall => {
       this.hall = hall;
       console.log(hall);
@@ -59,6 +61,7 @@ export class UpdateThing {
 
   save() {
     this.thing.by = this.uid;
+
     if (this.thingId) {
       this.ThingsService.update(this.hallId, this.thing, this.thingId).then(() => {
           this.presentToast("Yes, ton objet a été mise à jour avec succès.");
@@ -74,7 +77,8 @@ export class UpdateThing {
     }
   }
 
-  addNewProperties() {
-
+  editProperties() {
+    let modal = this.modalCtrl.create(UpdateHall, {hallId: this.hallId});
+    modal.present();
   }
 }

@@ -15,6 +15,7 @@ import { CreateHall } from '../pages/create-hall/create-hall';
 import { SignupPage } from '../pages/signup/signup';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
+import { UpdateHall } from '../pages/update-hall/update-hall';
 
 import { HallService } from '../providers/hall.service';
 import { ThingsService } from '../providers/things.service';
@@ -55,6 +56,7 @@ export const myFirebaseAuthConfig = {
     LoginPage,
     SignupPage,
     UpdateThing,
+    UpdateHall,
     ViewThing,
     TextType,
     NumberType,
@@ -79,6 +81,7 @@ export const myFirebaseAuthConfig = {
     LoginPage,
     SignupPage,
     UpdateThing,
+    UpdateHall,
     ViewThing
   ],
   providers: [
