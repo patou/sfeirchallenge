@@ -31,6 +31,7 @@ import { TextType } from '../component/type/text';
 import { NumberType } from '../component/type/number';
 import { DateTimeType } from '../component/type/date-time';
 import { TextAreaType } from '../component/type/textarea-type';
+import { IconType, IconTypePopover } from '../component/type/icon';
 
 export const myFirebaseConfig = {
     apiKey: "AIzaSyBgnWNzntzgNTHNUJlqkm5EEv-3bM1LzyA",
@@ -66,7 +67,9 @@ export const myFirebaseAuthConfig = {
     TextType,
     NumberType,
     DateTimeType,
-    TextAreaType
+    TextAreaType,
+    IconType,
+    IconTypePopover
   ],
   imports: [
     BrowserModule,
@@ -93,7 +96,8 @@ export const myFirebaseAuthConfig = {
     UpdateThing,
     UpdateHall,
     UpdateHallPopoverPage,
-    ViewThing
+    ViewThing,
+    IconTypePopover
   ],
   providers: [
     HallService,

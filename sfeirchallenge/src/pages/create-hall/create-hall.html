@@ -14,13 +14,7 @@
       <ion-label stacked>Donner un nom</ion-label>
       <ion-input type="text" [(ngModel)]="name"></ion-input>
     </ion-item>
-
-    <ion-item>
-      <ion-label>Choisissez une icone</ion-label>
-      <ion-select [(ngModel)]="icon">
-        <ion-option-icon *ngFor="let p of templates" [value]="p.icon" [icon]="p.icon">{{p.icon}}</ion-option-icon>
-      </ion-select>
-    </ion-item>
+    <icon-type label="Choisissez une icone" [(value)]="icon"></icon-type>
     <ion-list-header>
       Préconfiguré
     </ion-list-header>
