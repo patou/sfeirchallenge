@@ -1,7 +1,6 @@
-import { Component, ViewChild , ElementRef } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, ViewController, NavParams, ToastController, reorderArray, AlertController, List, PopoverController } from 'ionic-angular';
 import { HallService } from "../../providers/hall.service";
-import { ThingsService } from "../../providers/things.service";
 import { UserData } from "../../providers/user-data";
 import { Hall, propertyTypes, Property } from "../../providers/hallthings";
 
@@ -138,8 +137,10 @@ export class UpdateHall {
   }
 
   private createNewProperty(type:string, label:string) {
-      let name = label.toLowerCase().replace(/[^a-z0-9]/, '-');
+      let name = label.toLowerCase().replace(/[^a-z0-9]/g, '');
+      //todo faire attention aux collisions.
       let property:Property = {label: label, type: type, name: name, displayInList: this.hall.properties.length <= 5};
+
       this.hall.properties.push(property);
   }
 }

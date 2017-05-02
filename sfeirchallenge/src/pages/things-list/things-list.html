@@ -11,7 +11,9 @@
   <ion-fab right bottom>
     <button ion-fab (click)="addNew()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
-  <div *ngFor="let thing of things" (click)="open(thing.$key)">
-    <html-outlet [html]="hall.html" [values]="thing.values"></html-outlet>
-  </div>
+  <ion-list>
+    <div *ngFor="let thing of things" (click)="open(thing.$key)">
+      <html-outlet [html]="hall.html" [values]="thing.values"></html-outlet>
+    </div>
+  </ion-list>
 </ion-content>

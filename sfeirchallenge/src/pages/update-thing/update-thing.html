@@ -25,6 +25,12 @@
         <ng-container *ngSwitchCase="'DATE'">
           <datetime-type [label]="property.label" format="DD/MM/YYYY" [(value)]="thing.values[property.name]"></datetime-type>
         </ng-container>
+        <ng-container *ngSwitchCase="'DATETIME'">
+          <datetime-type [label]="property.label" format="DD/MM/YYYY HH::mm" [(value)]="thing.values[property.name]"></datetime-type>
+        </ng-container>
+        <ng-container *ngSwitchCase="'ICON'">
+          <icon-type [label]="property.label" [(value)]="thing.values[property.name]"></icon-type>
+        </ng-container>
         <ng-container *ngSwitchCase="'TEXTAREA'">
           <textarea-type [label]="property.label" [(value)]="thing.values[property.name]"></textarea-type>
         </ng-container>

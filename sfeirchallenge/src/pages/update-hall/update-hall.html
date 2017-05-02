@@ -15,13 +15,7 @@
       <ion-label stacked>Nom du Hall</ion-label>
       <ion-input type="text" [(ngModel)]="hall.name"></ion-input>
     </ion-item>
-
-    <ion-item>
-      <ion-label>Icone</ion-label>
-      <ion-select [(ngModel)]="hall.icon">
-        <ion-option-icon *ngFor="let p of templates" [value]="p.icon" [icon]="p.icon">{{p.icon}}</ion-option-icon>
-      </ion-select>
-    </ion-item>
+    <icon-type label="Icone" [(value)]="hall.icon"></icon-type>
     <ion-toolbar>
       <ion-buttons right>
         <button ion-button (click)="toggleReorder()">

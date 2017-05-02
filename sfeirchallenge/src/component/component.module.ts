@@ -17,7 +17,8 @@ import { TextAreaType } from './type/textarea-type';
     TextType,
     NumberType,
     DateTimeType,
-    TextAreaType
+    TextAreaType,
+    IconType
   ],
   imports: [
   ],
