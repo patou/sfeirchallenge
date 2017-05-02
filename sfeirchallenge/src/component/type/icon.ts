@@ -1,13 +1,13 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef,  } from '@angular/core';
 import { ViewController, PopoverController } from 'ionic-angular';
 
 @Component({
   selector: 'icon-type',
   template: `
-  <ion-item>
+  <ion-item (click)="openIconSelector($event)">
     <ion-label>{{label}}</ion-label>
-    <ion-icon item-right [name]="value" (click)="openIconSelector()"></ion-icon>
-    <ion-icon item-right name="arrow-dropdown" (click)="openIconSelector()"></ion-icon>
+    <ion-icon item-right [name]="value" (click)="openIconSelector($event)"></ion-icon>
+    <ion-icon item-right name="arrow-dropdown" (click)="openIconSelector($event)"></ion-icon>
   </ion-item>
   `
 })
@@ -22,7 +22,8 @@ export class IconType {
 
   }
 
-  openIconSelector() {
+  openIconSelector(event) {
+    event.stopPropagation();
     let popover = this.popoverCtrl.create(IconTypePopover);
     popover.present({
       ev: event
@@ -50,7 +51,7 @@ export class IconTypePopover {
   "flask", "flower", "folder", "folder-open", "football", "funnel", "game-controller-a", "game-controller-b", "git-branch", "git-commit", "git-compare", "git-merge", "git-network", "git-pull-request", "glasses", "globe", "grid", "hammer", "hand", "happy",
   "headset", "heart", "help", "help-buoy", "help-circle", "home", "ice-cream", "image", "images", "infinite", "information", "information-circle", "ionic", "ionitron", "jet", "key", "keypad", "laptop", "leaf", "list",
   "list-box", "locate", "lock", "log-in", "log-out", "magnet", "mail", "mail-open", "male", "man", "map", "medal", "medical", "medkit", "megaphone", "menu", "mic", "mic-off", "microphone", "moon",
-  "more", "move", "musical-note", "musical-notes", "navigate", "no-smoking", "notifications", 
+  "more", "move", "musical-note", "musical-notes", "navigate", "no-smoking", "notifications",
   "notifications-off", "nuclear", "nutrition", "open", "options", "outlet", "paper", "paper-plane", "partly-sunny", "pause", "paw", "people", "person", "person-add", "phone-landscape", "phone-portrait", "photos", "pie", "pin", "pint",
   "pizza", "plane", "planet", "play", "podium", "power", "pricetag", "pricetags", "print", "pulse", "qr-scanner", "quote", "radio", "radio-button-off", "radio-button-on", "rainy", "recording", "redo", "refresh", "refresh-circle",
   "remove", "remove-circle", "reorder", "repeat", "resize", "restaurant", "return-left", "return-right",

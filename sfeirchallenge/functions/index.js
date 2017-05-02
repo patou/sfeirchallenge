@@ -34,7 +34,7 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
           switch (property.type) {
             case "TEXT":
               tagsIndex = tagsIndex < tags.length-1 ? tagsIndex + 1 : tags.length-1;
-              html.append(`<${tag}>{{values.${property.name}}}</${tag}${tag}>>`);
+              html.append(`<${tag}>{{values.${property.name}}}</${tag}>`);
               break;
             case "NUMBER":
               html.append(`<div item-right>{{values.${property.name} | number}}</div item-right>`);
@@ -48,7 +48,7 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
               html.append(`<${tag}>{{values.${property.name} | date}}</${tag}>`);
               break;
             case "YEAR":
-              html.append(`<div item-right>{{values.${property.name} | date}}</div>`);
+              html.append(`<div item-right>{{values.${property.name} | date:"yyyy"}}</div>`);
               break;
             case "TEXTAREA":
               html.append(`<p>{{values.${property.name} | date}}</p>`);

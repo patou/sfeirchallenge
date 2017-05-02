@@ -3,6 +3,21 @@ import { Hall, Model } from './hallthings';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 export const HALLS: Model[] = [
+  { name: 'Simple',
+  color: '#2ecc71',
+  icon: 'book',
+  type: 'none',
+  html:`<ion-item>
+  Chargement...
+  </ion-item>`,
+  properties : [{
+    label: "Titre",
+    name: "name",
+    type: 'TEXT',
+    displayInList: true
+  }
+]
+},
   { name: 'Mes Livres',
   color: '#2ecc71',
   icon: 'book',

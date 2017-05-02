@@ -37,7 +37,7 @@ export class HtmlOutlet {
   constructor(private vcRef: ViewContainerRef, private compiler: Compiler) { }
 
   ngOnChanges() {
-    const html = this.html;
+    const html = this.html || '';
     if (!html) return;
 
     if(this.cmpRef) {
@@ -49,7 +49,7 @@ export class HtmlOutlet {
       template: this.html,
       inputs: ['values']
     });
-    let val = this.values;
+    let val = this.values || {};
 
     createComponentFactory(this.compiler, compMetadata)
     .then(factory => {
