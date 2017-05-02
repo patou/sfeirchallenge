@@ -25,10 +25,41 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
       let html = new StringBuilder();
       console.info(hallId);
       let properties = event.data.val();
+      let tags = ["h1", "h2", "h3", "p"];
+      let tagsIndex = 0;
       properties.forEach((property) => {
         console.info(property.name + ': ' + property.type);
         if (property.displayInList) {
-            html.append(`<h1>{{values.${property.name}}}</h1>`);
+          let tag = tags[tagsIndex];
+          switch (property.type) {
+            case "TEXT":
+              tagsIndex = tagsIndex < tags.length-1 ? tagsIndex + 1 : tags.length-1;
+              html.append(`<${tag}>{{values.${property.name}}}</${tag}${tag}>>`);
+              break;
+            case "NUMBER":
+              html.append(`<div item-right>{{values.${property.name} | number}}</div item-right>`);
+              break;
+            case "DATE":
+              tagsIndex = tagsIndex < tags.length-1 ? tagsIndex + 1 : tags.length-1;
+              html.append(`<${tag}>{{values.${property.name} | date}}</${tag}>`);
+              break;
+            case "DATETIME":
+              tagsIndex = tagsIndex < tags.length-1 ? tagsIndex + 1 : tags.length-1;
+              html.append(`<${tag}>{{values.${property.name} | date}}</${tag}>`);
+              break;
+            case "YEAR":
+              html.append(`<div item-right>{{values.${property.name} | date}}</div>`);
+              break;
+            case "TEXTAREA":
+              html.append(`<p>{{values.${property.name} | date}}</p>`);
+              break;
+            case "ICON":
+              html.insert(`<ion-icon [name]="values.${property.name}" item-left></ion-icon>`, 0);
+              break;
+            case "ICON":
+              html.insert(`<ion-icon [name]="values.${property.name}" item-left></ion-icon>`, 0);
+              break;
+          }
         }
       });
       html.insert(`<ion-item>`, 0);
