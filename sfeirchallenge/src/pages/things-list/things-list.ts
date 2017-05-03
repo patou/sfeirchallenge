@@ -14,6 +14,7 @@ import { Hall } from '../../providers/hallthings'
 })
 export class ThingsList {
   hallId: string;
+  html = '';
   hall: Hall;
   things: Array<any>;
 
@@ -22,15 +23,11 @@ export class ThingsList {
     this.hallId = navParams.get('hallId');
 
     HallService.getHall(this.hallId).subscribe(hall => {
-      this.hall = hall;
-      if (!hall.properties) {
-          let model = HallService.getModel(hall.type);
-          this.hall.html = model.html;
-          this.hall.properties = model.properties;
-          HallService.update(this.hallId, this.hall);
-      }
-
       console.log(hall);
+      if (hall && hall.name && (<any>hall).$exists()) {
+        this.hall = hall;
+        this.html = this.hall.html;
+      }
     });
     ThingsService.getThings(this.hallId).subscribe(things => {
       this.things = things;

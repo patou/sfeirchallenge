@@ -38,6 +38,7 @@
         </ion-icon>
         <div *ngSwitchCase="'COLOR'" class="colorbox" [style.backgroundColor]="thing.values[property.name]">
         </div>
+        <picture-display *ngSwitchCase="'PICTURE'" [image]="thing.values[property.name]"></picture-display>
       </ng-container>
     </ion-item>
   </ion-list>

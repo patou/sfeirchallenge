@@ -4,3 +4,91 @@
   border: solid #333 thin;
   cursor: pointer;
 }
+
+picture-type {
+  .uploader input {
+    width:0.1px;
+    height: 0.1px;
+  }
+
+  .uploader {
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: #efefef;
+    background-color: rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    display: -webkit-flex;
+    display: flex;
+    height: 100px;
+    -webkit-justify-content: center;
+    justify-content: center;
+    outline: 3px dashed #ccc;
+    outline-offset: 3px;
+    position: relative;
+    width: 100px;
+    margin: 5px;
+  }
+
+  .uploader img,
+  .uploader .icon {
+    pointer-events: none;
+  }
+
+  .uploader,
+  .uploader .icon {
+    -webkit-transition: all 100ms ease-in;
+    -moz-transition: all 100ms ease-in;
+    -ms-transition: all 100ms ease-in;
+    -o-transition: all 100ms ease-in;
+    transition: all 100ms ease-in;
+  }
+
+  .uploader .icon {
+    color: #eee;
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 5em;
+  }
+
+  .uploader img {
+    left: 50%;
+    opacity: 0;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    -webkit-transition: all 300ms ease-in;
+    -moz-transition: all 300ms ease-in;
+    -ms-transition: all 300ms ease-in;
+    -o-transition: all 300ms ease-in;
+    transition: all 300ms ease-in;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
+  .uploader img.loaded {
+    opacity: 1;
+  }
+
+    @keyframes blink {
+      50% {
+        opacity: 0.0;
+      }
+    }
+    @-webkit-keyframes blink {
+      50% {
+        opacity: 0.0;
+      }
+    }
+    .blink {
+      animation: blink 1s step-start 0s infinite;
+      -webkit-animation: blink 1s step-start 0s infinite;
+    }
+}
+.picture-display {
+  display: block;
+  max-width: 100%;
+}

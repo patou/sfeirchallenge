@@ -13,6 +13,7 @@ import {
 
 import { CommonModule } from '@angular/common';
 import { IonicModule } from 'ionic-angular';
+//import { PictureThumbnail } from './thumbnail';
 
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
