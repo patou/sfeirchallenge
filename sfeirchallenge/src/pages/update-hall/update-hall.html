@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{thingId ? "Mettre à jour : ":"Créer un : "}} <div *ngIf="type">{{type.name}}</div></ion-title>
+    <ion-title>{{thingId ? "Mettre à jour : ":"Créer un : "}} <span *ngIf="hall">{{hall.name}}</span></ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -12,10 +12,11 @@
   </ion-fab>
   <ion-list #list>
     <ion-item>
-      <ion-label stacked>Nom du Hall</ion-label>
+      <ion-label>Nom du Hall</ion-label>
       <ion-input type="text" [(ngModel)]="hall.name"></ion-input>
     </ion-item>
     <icon-type label="Icone" [(value)]="hall.icon"></icon-type>
+    <color-type label="Couleur d'arrière plan" [(value)]="hall.color"></color-type>
     <ion-toolbar>
       <ion-buttons right>
         <button ion-button (click)="toggleReorder()">
@@ -24,7 +25,7 @@
       </ion-buttons>
       <ion-title>Propriètés</ion-title>
       <ion-buttons left>
-        <button ion-button (click)="addNewProperties($event)" #add>
+        <button ion-button color="primary" solid (click)="addNewProperties($event)" #add>
           <ion-icon name="add"></ion-icon>
         </button>
       </ion-buttons>

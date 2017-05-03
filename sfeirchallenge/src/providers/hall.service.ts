@@ -5,7 +5,7 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 export const HALLS: Model[] = [
   { name: 'Simple',
   color: '#2ecc71',
-  icon: 'book',
+  icon: 'add',
   type: 'none',
   html:`<ion-item>
   Chargement...

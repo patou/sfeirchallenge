@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{thingId ? "Mettre à jour : ":"Créer un : "}} <div *ngIf="hall">{{hall.name}}</div></ion-title>
+    <ion-title>{{thingId ? "Mettre à jour : ":"Créer un : "}} <span *ngIf="hall">{{hall.name}}</span></ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -33,6 +33,9 @@
         </ng-container>
         <ng-container *ngSwitchCase="'TEXTAREA'">
           <textarea-type [label]="property.label" [(value)]="thing.values[property.name]"></textarea-type>
+        </ng-container>
+        <ng-container *ngSwitchCase="'COLOR'">
+          <color-type [label]="property.label" [(value)]="thing.values[property.name]"></color-type>
         </ng-container>
       </div>
     </ng-container>

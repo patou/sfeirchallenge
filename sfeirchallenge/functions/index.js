@@ -27,6 +27,7 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
       let properties = event.data.val();
       let tags = ["h1", "h2", "h3", "p"];
       let tagsIndex = 0;
+      let attr = '';
       properties.forEach((property) => {
         console.info(property.name + ': ' + property.type);
         if (property.displayInList) {
@@ -56,13 +57,13 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
             case "ICON":
               html.insert(`<ion-icon [name]="values.${property.name}" item-left></ion-icon>`, 0);
               break;
-            case "ICON":
-              html.insert(`<ion-icon [name]="values.${property.name}" item-left></ion-icon>`, 0);
+            case "COLOR":
+              attr += ` [style.backgroundColor]="values.${property.name}"`;
               break;
           }
         }
       });
-      html.insert(`<ion-item>`, 0);
+      html.insert(`<ion-item${attr}>`, 0);
       html.append(`</ion-item>`);
       let promise = new Promise((resolve, reject) => {
         html.toString((err, result) => {

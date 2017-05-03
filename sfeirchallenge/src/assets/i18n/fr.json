@@ -11,6 +11,7 @@
         "CHECKBOX": "Case à cocher",
         "BARCODE": "Codebar",
         "ICON": "Icone",
-        "SELECT": "Liste déroulante"
+        "SELECT": "Liste déroulante",
+        "COLOR": "Couleur de fond"
     }
 }

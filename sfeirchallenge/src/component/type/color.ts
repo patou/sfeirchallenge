@@ -41,7 +41,9 @@ export class ColorType {
   `
 })
 export class ColorTypePopover {
-  colors = ["#ddd", "#2ecc71", "#9b59b6", "#3498db", "#95a5a6", "#f1c40f", "#8e44ad"];
+  colors = ["#ddd", "#2ecc71", "#9b59b6", "#3498db", "#95a5a6", "#f1c40f", "#1a237e", "#b71c1c", "#880e4f", "#4a148c",
+   "#311b92", "#0d47a1", "#01579b", "#006064", "#004d40", "#1b5e20", "#33691e", "#827717", "#f57f17", "#ff6f00", "#e65100", "#bf360c", "#3e2723", "#212121", "#d50000", "#c51162", "#aa00ff", "#6200ea", "#304ffe", "#2962ff",
+   "#0091ea", "#00b8d4", "#00bfa5", "#00c853", "#64dd17", "#aeea00", "#ffd600", "#ffab00", "#ff6d00", "#dd2c00"];
   constructor(public viewCtrl: ViewController) {
 
   }

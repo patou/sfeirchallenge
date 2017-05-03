@@ -24,7 +24,13 @@ page-hall-list {
       left: 0%;
       position: absolute;
       top: 2%;
+      @media screen and (max-width: 400px) {
+        font-size: 5em;
+        margin: 10px;
+        top: 20%;
+      }
     }
+
 
     .card-subtitle {
       font-size: 1.0em;
