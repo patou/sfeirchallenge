@@ -41,17 +41,17 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
               break;
             case "DATE":
               tagsIndex = tagsIndex < tags.length-1 ? tagsIndex + 1 : tags.length-1;
-              html.append(`<${tag}>{{values.${property.name} | date}}</${tag}>`);
+              html.append(`<${tag}>{{values.${property.name} | date:"dd/MM/yyyy"}}</${tag}>`);
               break;
             case "DATETIME":
               tagsIndex = tagsIndex < tags.length-1 ? tagsIndex + 1 : tags.length-1;
-              html.append(`<${tag}>{{values.${property.name} | date}}</${tag}>`);
+              html.append(`<${tag}>{{values.${property.name} | date:"dd/MM/yyyy HH:mm"}}</${tag}>`);
               break;
             case "YEAR":
               html.append(`<div item-right>{{values.${property.name} | date:"yyyy"}}</div>`);
               break;
             case "TEXTAREA":
-              html.append(`<p>{{values.${property.name} | date}}</p>`);
+              html.append(`<p>{{values.${property.name}}}</p>`);
               break;
             case "ICON":
               html.insert(`<ion-icon [name]="values.${property.name}" item-left></ion-icon>`, 0);

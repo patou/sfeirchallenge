@@ -11,10 +11,11 @@
   <ion-list>
 
     <ion-item>
-      <ion-label stacked>Donner un nom</ion-label>
+      <ion-label>Donner un nom</ion-label>
       <ion-input type="text" [(ngModel)]="name"></ion-input>
     </ion-item>
     <icon-type label="Choisissez une icone" [(value)]="icon"></icon-type>
+    <color-type label="Choisissez une couleur" [(value)]="color"></color-type>
     <ion-list-header>
       Préconfiguré
     </ion-list-header>
