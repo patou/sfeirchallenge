@@ -3,14 +3,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{thingId ? "Mettre à jour : ":"Créer un : "}} <span *ngIf="hall">{{hall.name}}</span></ion-title>
+    <ion-title>{{thingId ? "Mettre à jour : ":"Créer un : "}} <span *ngIf="hall">{{hall?.name}}</span></ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
   <ion-fab right bottom>
     <button ion-fab (click)="addNewProperties()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
-  <ion-list #list>
+  <ion-list #list *ngIf="hall">
     <ion-item>
       <ion-label>Nom du Hall</ion-label>
       <ion-input type="text" [(ngModel)]="hall.name"></ion-input>

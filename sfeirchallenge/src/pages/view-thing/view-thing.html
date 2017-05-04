@@ -41,6 +41,9 @@
         </ion-icon>
         <div *ngSwitchCase="'COLOR'" class="colorbox" [style.backgroundColor]="thing.values[property.name]">
         </div>
+        <div *ngSwitchCase="'STAR'">
+          <ion-icon *ngFor="let rate of [1,2,3,4,5]" [name]="rate <= thing.values[property.name] ? 'star' : 'star-outline'"></ion-icon>
+        </div>
         <picture-display *ngSwitchCase="'PICTURE'" [image]="thing.values[property.name]"></picture-display>
       </ng-container>
     </ion-item>

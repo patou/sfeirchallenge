@@ -12,6 +12,7 @@
         "BARCODE": "Codebar",
         "ICON": "Icone",
         "SELECT": "Liste déroulante",
-        "COLOR": "Couleur de fond"
+        "COLOR": "Couleur de fond",
+        "STAR": "Note sur 5"
     }
 }

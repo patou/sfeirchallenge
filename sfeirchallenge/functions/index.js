@@ -63,6 +63,9 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
             case "PICTURE":
               html.insert(`<picture-thumbnail [image]=\"values.${property.name}\"  item-left></picture-thumbnail>`, 0);
               break;
+            case "STAR":
+              html.append(`<div item-right><ion-icon *ngFor="let rate of [1,2,3,4,5]" [name]="rate <= values.${property.name} ? 'star' : 'star-outline'"></ion-icon></div>`)
+              break;
           }
         }
       });

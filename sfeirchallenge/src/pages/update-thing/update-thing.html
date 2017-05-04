@@ -22,6 +22,7 @@
         <textarea-type *ngSwitchCase="'TEXTAREA'" [label]="property.label" [(value)]="thing.values[property.name]"></textarea-type>
         <color-type *ngSwitchCase="'COLOR'" [label]="property.label" [(value)]="thing.values[property.name]"></color-type>
         <picture-type *ngSwitchCase="'PICTURE'" [label]="property.label" [(value)]="thing.values[property.name]"></picture-type>
+        <star-type *ngSwitchCase="'STAR'" [label]="property.label" [(value)]="thing.values[property.name]"></star-type>
       </div>
     </ng-container>
     <button ion-button full (click)="save()" [disabled]="!hall.type">{{thingId ? "Mettre à jour":"Créer"}}</button>

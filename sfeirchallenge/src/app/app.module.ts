@@ -33,6 +33,7 @@ import { DateTimeType } from '../component/type/date-time';
 import { TextAreaType } from '../component/type/textarea-type';
 import { IconType, IconTypePopover } from '../component/type/icon';
 import { ColorType, ColorTypePopover } from '../component/type/color';
+import { StarType } from '../component/type/star';
 import { PictureType } from '../component/type/picture';
 import { PictureDisplay } from '../component/picture';
 
@@ -76,7 +77,8 @@ export const myFirebaseAuthConfig = {
     ColorType,
     ColorTypePopover,
     PictureType,
-    PictureDisplay
+    PictureDisplay,
+    StarType
   ],
   imports: [
     BrowserModule,
