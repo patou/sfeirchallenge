@@ -12,7 +12,6 @@ import { HallThingsApp } from './app.component';
 import { Swiper } from '../pages/swiper/swiper';
 import { HallList } from '../pages/hall-list/hall-list';
 import { ThingsList } from '../pages/things-list/things-list';
-import { SettingsPage } from '../pages/settings/settings';
 import { UpdateThing } from '../pages/update-thing/update-thing';
 import { ViewThing } from '../pages/view-thing/view-thing';
 import { CreateHall } from '../pages/create-hall/create-hall';
@@ -60,7 +59,6 @@ export const myFirebaseAuthConfig = {
     HallList,
     ThingsList,
     CreateHall,
-    SettingsPage,
     AccountPage,
     LoginPage,
     SignupPage,
@@ -98,7 +96,6 @@ export const myFirebaseAuthConfig = {
     HallList,
     ThingsList,
     CreateHall,
-    SettingsPage,
     AccountPage,
     LoginPage,
     SignupPage,

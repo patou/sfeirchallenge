@@ -8,7 +8,6 @@ import { Swiper } from '../pages/swiper/swiper';
 import { HallList } from '../pages/hall-list/hall-list';
 import { ThingsList } from '../pages/things-list/things-list';
 import { CreateHall } from '../pages/create-hall/create-hall';
-import { SettingsPage } from '../pages/settings/settings';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';

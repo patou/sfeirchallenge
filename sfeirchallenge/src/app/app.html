@@ -21,7 +21,7 @@
     <ion-footer>
       <div padding>
         <button ion-button full menuClose (click)="openCreateHall()">
-          Créer un type
+          Créer un Hall
         </button>
         <button ion-item menuClose *ngFor="let p of loggedInPages" (click)="openPage(p)">
           <ion-icon item-left [name]="p.icon" [color]="isActive(p)"></ion-icon>
