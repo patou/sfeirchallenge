@@ -29,8 +29,7 @@ export class HallThingsApp {
   @ViewChild(Nav) nav: Nav;
   loggedInPages: PageInterface[] = [
     { title: 'Mon compte', component: AccountPage, icon: 'person' },
-    { title: 'Deconnexion', component: LoginPage, icon: 'log-out', logsOut: true },
-    { title: 'Parametres', component: SettingsPage, icon: 'settings' }
+    { title: 'Deconnexion', component: LoginPage, icon: 'log-out', logsOut: true }
   ];
   loggedOutPages: PageInterface[] = [
     { title: 'Connexion', component: LoginPage, icon: 'log-in' },
@@ -122,7 +121,7 @@ enableMenu(loggedIn: boolean) {
   openHall(hall) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(ThingsList, {id: hall.$key});
+    this.nav.setRoot(ThingsList, {hallId: hall.$key});
   }
 
   openPage(page: PageInterface) {

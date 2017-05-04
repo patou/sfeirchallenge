@@ -51,11 +51,6 @@ export class UpdateThing {
       duration: 1000,
       position: 'bottom'
     });
-
-    toast.onDidDismiss(() => {
-      this.nav.setRoot(HallList);
-    });
-
     toast.present();
   }
 
