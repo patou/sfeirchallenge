@@ -22,6 +22,9 @@
         <span *ngSwitchCase="'TEXT'">
           {{thing.values[property.name]}}
         </span>
+        <span *ngSwitchCase="'SELECT'">
+          {{thing.values[property.name]}}
+        </span>
         <span *ngSwitchCase="'NUMBER'">
           {{thing.values[property.name]|number}}
         </span>

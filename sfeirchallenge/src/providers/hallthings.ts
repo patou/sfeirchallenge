@@ -14,14 +14,14 @@ export class Thing {
   by: string;
   values: any;
 }
-//TODO : 'CHECKBOX' , 'SELECT' , 'BARCODE', 
-export const propertyTypes : string[] = ['TEXT' , 'NUMBER' , 'DATE' , 'DATETIME' , 'YEAR' , 'PICTURE' , 'TEXTAREA' , 'ICON' , 'COLOR', 'STAR'];
+//TODO : 'CHECKBOX' , 'SELECT' , 'BARCODE',
+export const propertyTypes : string[] = ['TEXT' , 'NUMBER' , 'DATE' , 'DATETIME' , 'PICTURE' , 'SELECT', 'TEXTAREA' , 'ICON' , 'YEAR' , 'COLOR', 'STAR'];
 export class Property {
   label: string;
   name: string;
   type: string;
   displayInList: boolean;
-  values?: any[];
+  values?: string;
 }
 export class Model {
   type: string;

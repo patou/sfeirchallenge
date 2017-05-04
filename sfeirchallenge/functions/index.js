@@ -51,6 +51,9 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
             case "YEAR":
               html.append(`<div item-right>{{values?.${property.name} | date:"yyyy"}}</div>`);
               break;
+            case "SELECT":
+              html.append(`<div item-right>{{values?.${property.name}}}</div>`);
+              break;
             case "TEXTAREA":
               html.append(`<p>{{values?.${property.name}}}</p>`);
               break;

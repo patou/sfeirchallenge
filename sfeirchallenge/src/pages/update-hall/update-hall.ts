@@ -56,14 +56,20 @@ export class UpdateHall {
    }
 
    editProperties(property) {
-     let alert = this.alertCtrl.create({
-         title: 'Modifier une propriété',
-         inputs: [
-           {
+     let inputs :any[] = [{
              name: 'label',
              value: property.label
-           }
-         ],
+           }];
+     if (property.type === 'SELECT') {
+       inputs.push({
+             name: 'values',
+             placeholder: 'Valeurs (séparé par des virgules)',
+             value: property.values
+           });
+     }
+     let alert = this.alertCtrl.create({
+         title: 'Modifier une propriété',
+         inputs: inputs,
          buttons: [
            {
              text: 'Annuler',
@@ -77,6 +83,7 @@ export class UpdateHall {
              text: 'Changer',
              handler: data => {
                property.label = data.label;
+               property.values = data.values;
                this.list.closeSlidingItems();
              }
            }
@@ -108,14 +115,18 @@ export class UpdateHall {
   }
 
   private askNewPropertyLabel(type) {
+    let inputs :any[] = [{
+             name: 'label'
+           }];
+     if (type === 'SELECT') {
+       inputs.push({
+             name: 'values',
+             placeholder: 'Valeurs (séparé par des virgules)'
+           });
+     }
     let alert = this.alertCtrl.create({
        title: 'Ajouter une propriété',
-       inputs: [
-         {
-           name: 'label',
-           placeholder: 'Nom'
-         }
-       ],
+       inputs: inputs,
        buttons: [
          {
            text: 'Annuler',
@@ -128,7 +139,7 @@ export class UpdateHall {
          {
            text: 'Ajouter',
            handler: data => {
-            this.createNewProperty(type, data.label);
+            this.createNewProperty(type, data.label, data.values);
            }
          }
        ]
@@ -136,10 +147,10 @@ export class UpdateHall {
      alert.present();
   }
 
-  private createNewProperty(type:string, label:string) {
+  private createNewProperty(type:string, label:string, values?: string) {
       let name = label.toLowerCase().replace(/[^a-z0-9]/g, '');
       //todo faire attention aux collisions.
-      let property:Property = {label: label, type: type, name: name, displayInList: this.hall.properties.length <= 5};
+      let property:Property = {label: label, type: type, name: name, displayInList: this.hall.properties.length <= 5, values: values};
 
       this.hall.properties.push(property);
   }
