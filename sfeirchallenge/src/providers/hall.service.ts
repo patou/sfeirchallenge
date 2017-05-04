@@ -1,5 +1,7 @@
+import { Subject } from "rxjs";
 import { Injectable } from '@angular/core';
 import { Hall, Model } from './hallthings';
+import { UserData } from './user-data';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 export const HALLS: Model[] = [
@@ -268,8 +270,15 @@ properties : [{
 @Injectable()
 export class HallService {
   halls : FirebaseListObservable<Hall[]>;
-  constructor(private af: AngularFire) {
-    this.halls = af.database.list('halls');
+  constructor(private af: AngularFire, private userService : UserData) {
+    let uid : Subject<string> = new Subject();
+    this.halls = af.database.list('halls', {query: {
+      orderByChild: 'owner',
+      equalTo: uid
+    }});
+    userService.getUid().then(userid => {
+      uid.next(userid);
+    });
   }
 
   getHallsAvailable(): Model[] {

@@ -10,6 +10,7 @@ import firebase from 'firebase';
 export class UserData {
   HAS_LOGGED_IN = 'hasLoggedIn';
   public fireAuth: any;
+  public uid: string;
 
   constructor(
     public events: Events,
@@ -26,6 +27,7 @@ export class UserData {
         this.storage.set('UID', auth.uid);
         this.storage.set('EMAIL', username);
         this.storage.set('PASSWORD', password);
+        this.uid = auth.uid;
         this.storage.set(this.HAS_LOGGED_IN, true);
         this.setUsername(username);
         this.events.publish('user:login');
@@ -38,6 +40,7 @@ export class UserData {
           this.storage.set('UID', auth.uid);
           this.storage.set('EMAIL', username);
           this.storage.set('PASSWORD', password);
+          this.uid = auth.uid;
           this.storage.set(this.HAS_LOGGED_IN, true);
           this.setUsername(username);
           this.events.publish('user:signup');
@@ -51,6 +54,7 @@ export class UserData {
       this.storage.set('UID', '');
       this.storage.set('EMAIL', '');
       this.storage.set('PASSWORD', '');
+      this.uid = undefined;
       console.log('Log Out Successful');
       this.storage.remove(this.HAS_LOGGED_IN);
       this.storage.remove('username');
@@ -70,8 +74,16 @@ export class UserData {
   };
 
   getUid(): Promise<string> {
-    return this.storage.get('UID').then((value) => {
-      return value;
+    return new Promise<string>((resolve, reject) => {
+      if (!this.uid) {
+        this.storage.get('UID').then((value) => {
+          this.uid = value;
+          resolve(value);
+        }).catch(reject);
+      }
+      else {
+        resolve(this.uid);
+      }
     });
   };
 
