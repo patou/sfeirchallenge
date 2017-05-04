@@ -60,6 +60,9 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
             case "COLOR":
               attr += ` [style.backgroundColor]="values.${property.name}"`;
               break;
+            case "PICTURE":
+              html.insert(`<picture-thumbnail [image]=\"values.${property.name}\"  item-left></picture-thumbnail>`, 0);
+              break;
           }
         }
       });
