@@ -115,6 +115,9 @@ export class HallThingsApp {
 enableMenu(loggedIn: boolean) {
   this.menu.enable(loggedIn, 'loggedInMenu');
   this.menu.enable(!loggedIn, 'loggedOutMenu');
+  if (!loggedIn) {
+    this.things = [];
+  }
 }
 
   openHall(hall) {

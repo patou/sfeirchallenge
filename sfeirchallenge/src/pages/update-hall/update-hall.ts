@@ -83,7 +83,8 @@ export class UpdateHall {
              text: 'Changer',
              handler: data => {
                property.label = data.label;
-               property.values = data.values;
+               if (data.values)
+                  property.values = data.values;
                this.list.closeSlidingItems();
              }
            }
@@ -150,7 +151,10 @@ export class UpdateHall {
   private createNewProperty(type:string, label:string, values?: string) {
       let name = label.toLowerCase().replace(/[^a-z0-9]/g, '');
       //todo faire attention aux collisions.
-      let property:Property = {label: label, type: type, name: name, displayInList: this.hall.properties.length <= 5, values: values};
+      let property:Property = {label: label, type: type, name: name, displayInList: this.hall.properties.length <= 5};
+      if (values)
+         property.values = values;
+
 
       this.hall.properties.push(property);
   }
