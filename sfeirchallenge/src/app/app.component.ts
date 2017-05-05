@@ -44,9 +44,7 @@ export class HallThingsApp {
   values = {name: 'toto', artist: 'titi', count: 0};
 
   constructor(public platform: Platform, private menu: MenuController, translate: TranslateService, public events: Events, public userData: UserData, private HallService: HallService) {
-    localStorage.getItem("alreadyVisited" + localStorage.getItem("alreadyVisited"));
     if(localStorage.getItem("alreadyVisited") === "true") {
-      this.rootPage = HallList;
       this.userData.hasLoggedIn().then((hasLoggedIn) => {
         this.enableMenu(hasLoggedIn === true);
         if(hasLoggedIn){
@@ -66,10 +64,6 @@ export class HallThingsApp {
 
     this.initializeApp();
     this.listenToLoginEvents();
-
-    // used for an example of ngFor and navigation
-    HallService.getHalls().subscribe(list => this.things = list);
-
   }
 
   incr() {
@@ -97,19 +91,19 @@ export class HallThingsApp {
   }
 
   listenToLoginEvents() {
-  this.events.subscribe('user:login', () => {
-    this.enableMenu(true);
-    this.nav.setRoot(HallList);
-  });
+    this.events.subscribe('user:login', () => {
+      this.enableMenu(true);
+      this.nav.setRoot(HallList);
+    });
 
-  this.events.subscribe('user:signup', () => {
-    this.enableMenu(true);
-    this.nav.setRoot(HallList);
-  });
+    this.events.subscribe('user:signup', () => {
+      this.enableMenu(true);
+      this.nav.setRoot(HallList);
+    });
 
-  this.events.subscribe('user:logout', () => {
-    this.enableMenu(false);
-  });
+    this.events.subscribe('user:logout', () => {
+      this.enableMenu(false);
+    });
 }
 
 enableMenu(loggedIn: boolean) {
@@ -117,6 +111,9 @@ enableMenu(loggedIn: boolean) {
   this.menu.enable(!loggedIn, 'loggedOutMenu');
   if (!loggedIn) {
     this.things = [];
+  }
+  else {
+    this.HallService.getHalls().subscribe(list => this.things = list);
   }
 }
 
@@ -127,7 +124,6 @@ enableMenu(loggedIn: boolean) {
   }
 
   openPage(page: PageInterface) {
-
     this.nav.setRoot(page.component).catch(() => {
         console.log("Didn't set nav root");
     });

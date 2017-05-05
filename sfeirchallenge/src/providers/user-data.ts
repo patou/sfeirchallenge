@@ -88,8 +88,11 @@ export class UserData {
   };
 
   hasLoggedIn(): Promise<boolean> {
-    return this.storage.get(this.HAS_LOGGED_IN).then((value) => {
-      return value === true;
+    return new Promise<boolean>((resolve, reject) => {
+        if (this.af.auth.getAuth())
+          resolve(true);
+        else
+          resolve(false);
     });
   };
 

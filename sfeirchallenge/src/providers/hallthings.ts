@@ -14,7 +14,7 @@ export class Thing {
   by: string;
   values: any;
 }
-//TODO : 'CHECKBOX' , 'SELECT' , 'BARCODE',
+//TODO : 'CHECKBOX' , 'BARCODE',
 export const propertyTypes : string[] = ['TEXT' , 'NUMBER' , 'DATE' , 'DATETIME' , 'PICTURE' , 'SELECT', 'TEXTAREA' , 'ICON' , 'YEAR' , 'COLOR', 'STAR'];
 export class Property {
   label: string;
