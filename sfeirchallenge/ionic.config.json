@@ -1,6 +1,5 @@
 {
   "name": "HallThings",
   "app_id": "8ee244b3",
-  "v2": true,
-  "typescript": true
+  "type": "ionic-angular"
 }

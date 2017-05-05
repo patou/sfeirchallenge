@@ -1,10 +1,9 @@
 import { BehaviorSubject, Observable } from "rxjs";
 import { Events } from "ionic-angular";
-import { Subject } from "rxjs";
 import { Injectable } from '@angular/core';
 import { Hall, Model } from './hallthings';
 import { UserData } from './user-data';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 import { HALLS } from './models';
 
 @Injectable()

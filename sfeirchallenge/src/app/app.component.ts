@@ -12,6 +12,7 @@ import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { UserData } from '../providers/user-data';
+import { Splashscreen } from '@ionic-native/splashscreen';
 
 export interface PageInterface {
   title: string;
@@ -85,8 +86,10 @@ export class HallThingsApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      //StatusBar.styleDefault();
-      //Splashscreen.hide();
+      if (this.platform.is("cordova")) {
+        Splashscreen.hide();
+      }
+
     });
   }
 
