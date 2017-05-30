@@ -33,11 +33,20 @@ export class PictureThumbnail {
 
   loadImage(imageGuid) {
     if (imageGuid) {
-      firebase.storage().ref()
+      firebase.storage().ref("thumbnail")
+      .child(imageGuid)
+      .getDownloadURL().then((url) => {
+        this.imageSrc = url;
+      }, (error) => {
+        firebase.storage().ref()
         .child(imageGuid)
         .getDownloadURL().then((url) => {
           this.imageSrc = url;
+        }, (error) => {
+          console.log(error);
+          this.imageSrc = undefined;
         });
+      });
     }
   }
 }

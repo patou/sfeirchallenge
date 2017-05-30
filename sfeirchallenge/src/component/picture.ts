@@ -24,7 +24,10 @@ export class PictureDisplay {
         .child(imageGuid)
         .getDownloadURL().then((url) => {
           this.imageSrc = url;
-        });
+        }, (error) => {
+            console.log(error);
+            this.imageSrc = undefined;
+          });
     }
   }
 }
