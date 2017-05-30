@@ -38,7 +38,7 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
               html.append(`<${tag}>{{values?.${property.name}}}</${tag}>`);
               break;
             case "NUMBER":
-              html.append(`<div item-right>{{values?.${property.name} | number}}</div item-right>`);
+              html.append(`<div item-right>{{values?.${property.name} | number}}</div>`);
               break;
             case "DATE":
               tagsIndex = tagsIndex < tags.length-1 ? tagsIndex + 1 : tags.length-1;
@@ -49,7 +49,7 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
               html.append(`<${tag}>{{values?.${property.name} | date:"dd/MM/yyyy HH:mm"}}</${tag}>`);
               break;
             case "YEAR":
-              html.append(`<div item-right>{{values?.${property.name} | date:"yyyy"}}</div>`);
+              html.append(`<div item-right>{{values?.${property.name}}}</div>`);
               break;
             case "SELECT":
               html.append(`<div item-right>{{values?.${property.name}}}</div>`);

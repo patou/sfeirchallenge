@@ -29,7 +29,7 @@
           {{thing.values[property.name]|number}}
         </span>
         <span *ngSwitchCase="'YEAR'">
-          {{thing.values[property.name]|date:"yyyy"}}
+          {{thing.values[property.name]}}
         </span>
         <span *ngSwitchCase="'DATE'">
           {{thing.values[property.name]|date:"dd/MM/yyyy"}}
