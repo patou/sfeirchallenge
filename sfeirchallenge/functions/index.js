@@ -84,14 +84,6 @@ exports.updatePropertiesHalls = functions.database.ref('/halls/{hallId}/properti
       return promise;
     });
 
-exports.countThingsInHalls = functions.database.ref('/things/{hallId}')
-    .onWrite(event => {
-      // Grab the current value of what was written to the Realtime Database.
-      const hallId = event.params.hallId;
-      const count = event.data.numChildren();
-      return admin.database().ref('/halls').child(hallId).child('count').set(count);
-    });
-
     const gcs = require('@google-cloud/storage')();
     const spawn = require('child-process-promise').spawn;
     const LOCAL_TMP_FOLDER = '/tmp/';
